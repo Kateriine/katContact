@@ -24,6 +24,7 @@ class ContactData extends WP_Widget {
     $this->email = get_option('katEmail');
     $this->fbPage = get_option('katFbPage');
     $this->twitterPage = get_option('katTwitterPage');
+    $this->youtubePage = get_option('katYoutubePage');
     $this->gplusPage = get_option('katGplusPage');
     $this->linkedinPage = get_option('katLinkedinPage');
     $this->instagramPage = get_option('katInstagramPage');
