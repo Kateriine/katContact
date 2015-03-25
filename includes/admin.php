@@ -29,6 +29,8 @@ class My_Plugin_Admin {
         register_setting( 'my-plugin-settings-group', 'katFax' );
         register_setting( 'my-plugin-settings-group', 'katEmail' );
         register_setting( 'my-plugin-settings-group', 'katFbPage' );
+        register_setting( 'my-plugin-settings-group', 'kat_facebook_app_id' );
+        register_setting( 'my-plugin-settings-group', 'kat_facebook_app_secret' );
         register_setting( 'my-plugin-settings-group', 'katTwitterPage' );
         register_setting( 'my-plugin-settings-group', 'katGplusPage' );
         register_setting( 'my-plugin-settings-group', 'katLinkedinPage' );
@@ -90,6 +92,15 @@ class My_Plugin_Admin {
                 <tr valign="top">
                 <th scope="row"><?php _e('Facebook page', 'plugin'); ?></th>
                 <td><input type="text" name="katFbPage" value="<?php echo esc_attr( get_option('katFbPage') ); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('Facebook App ID', 'plugin'); ?></th>
+                <td><input type="text" name="kat_facebook_app_id" value="<?php echo esc_attr( get_option('kat_facebook_app_id') ); ?>" /></td>
+                </tr>
+                
+                <tr valign="top">
+                <th scope="row"><?php _e('Facebook App secret', 'plugin'); ?></th>
+                <td><input type="text" name="kat_facebook_app_secret" value="<?php echo esc_attr( get_option('kat_facebook_app_secret') ); ?>" /></td>
                 </tr>
                 
                 <tr valign="top">
@@ -178,6 +189,15 @@ class My_Plugin_Admin {
                 <tr valign="top">
                 <th scope="row"><?php _e('Facebook page', 'plugin'); ?></th>
                 <td><input type="text" name="katFbPage" value="<?php echo esc_attr( get_option('katFbPage') ); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('Facebook App ID', 'plugin'); ?></th>
+                <td><input type="text" name="kat_facebook_app_id" value="<?php echo esc_attr( get_option('kat_facebook_app_id') ); ?>" /></td>
+                </tr>
+                
+                <tr valign="top">
+                <th scope="row"><?php _e('Facebook App secret', 'plugin'); ?></th>
+                <td><input type="text" name="kat_facebook_app_secret" value="<?php echo esc_attr( get_option('kat_facebook_app_secret') ); ?>" /></td>
                 </tr>
                 
                 <tr valign="top">

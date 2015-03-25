@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Contact Data management from Kat
  * Plugin URI: 
- * Description: This plugin adds a Contact Data management page.
- * Version: 
+ * Description: This plugin adds a Contact Data management page and some Facebook data (Likes, etc.).
+ * Version: 1.1
  * Author: Catherine Arnould
  * Author URI: 
  * License: GPL2
@@ -16,7 +16,7 @@ new Kat_Contact_Plugin();
 class Kat_Contact_Plugin
 {
     private $defaults = array(
-        'version' => '1.0'
+        'version' => '1.1'
     );
 
 
@@ -42,6 +42,8 @@ class Kat_Contact_Plugin
         include_once(MY_PLUGIN_PATH.'includes/widget.php');
 
         register_widget('ContactData'); 
+        register_widget('FacebookJoin'); 
+        register_widget('FacebookLike'); 
     }
 
 
@@ -75,3 +77,4 @@ class Kat_Contact_Plugin
         $admin = new My_Plugin_Admin;
     }
 }
+?>
