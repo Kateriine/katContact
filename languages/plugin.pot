@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin\n"
+"POT-Creation-Date: 2015-02-06 12:16+0100\n"
+"PO-Revision-Date: 2015-02-06 12:17+0100\n"
+"Last-Translator: Bartosz Arendt <info@dfactory.eu>\n"
+"Language-Team: Catherine <catherine@spade.be>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.3\n"
+"X-Poedit-KeywordsList: gettext;gettext_noop;__;_e;esc_attr__;esc_attr_e;"
+"_n:1,2;_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../includes/admin.php:13
+msgid "Facebook settings"
+msgstr ""
+
+#: ../includes/admin.php:33 ../includes/admin.php:71
+msgid "Facebook parameters"
+msgstr ""
+
+#: ../includes/admin.php:47 ../includes/admin.php:85
+msgid "Page url"
+msgstr ""
+
+#: ../includes/admin.php:52 ../includes/admin.php:90
+msgid "Facebook App ID"
+msgstr ""
+
+#: ../includes/admin.php:57 ../includes/admin.php:95
+msgid "Facebook App secret"
+msgstr ""
+
+#: ../includes/widget.php:13
+msgid "Show number of FB likes block"
+msgstr ""
+
+#: ../includes/widget.php:15
+msgid "Show number of FB Likes"
+msgstr ""
+
+#: ../includes/widget.php:50
+msgid "Like"
+msgstr ""
+
+#: ../includes/widget.php:210
+msgid "Select image"
+msgstr ""
+
+#: ../includes/widget.php:211
+msgid "Remove image"
+msgstr ""
+
+#: ../includes/widget.php:227 ../includes/widget.php:229
+msgid "Show \"join us on FB\" block"
+msgstr ""
+
+#: ../includes/widget.php:255
+msgid "Join us"
+msgstr ""

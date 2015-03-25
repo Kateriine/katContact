@@ -1,0 +1,135 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin\n"
+"POT-Creation-Date: 2015-03-25 10:21+0100\n"
+"PO-Revision-Date: 2015-03-25 10:23+0100\n"
+"Last-Translator: Bartosz Arendt <info@dfactory.eu>\n"
+"Language-Team: Catherine <catherine@spade.be>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-KeywordsList: gettext;gettext_noop;__;_e;esc_attr__;esc_attr_e;"
+"_n:1,2;_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SearchPath-1: ../.\n"
+
+#: .././includes/admin.php:12 .././includes/admin.php:42
+#: .././includes/admin.php:125 ../includes/admin.php:12
+#: ../includes/admin.php:42 ../includes/admin.php:125
+msgid "Contact data"
+msgstr "Données de contact"
+
+#: .././includes/admin.php:56 .././includes/admin.php:139
+#: ../includes/admin.php:56 ../includes/admin.php:139
+msgid "Company"
+msgstr "Société"
+
+#: .././includes/admin.php:61 .././includes/admin.php:144
+#: ../includes/admin.php:61 ../includes/admin.php:144
+msgid "Address"
+msgstr "Adresse"
+
+#: .././includes/admin.php:66 .././includes/admin.php:149
+#: .././includes/admin.php:154 ../includes/admin.php:66
+#: ../includes/admin.php:149 ../includes/admin.php:154
+msgid "Zip and town"
+msgstr "CP et ville"
+
+#: .././includes/admin.php:71 .././includes/admin.php:159
+#: ../includes/admin.php:71 ../includes/admin.php:159
+msgid "Country"
+msgstr "Pays"
+
+#: .././includes/admin.php:76 .././includes/admin.php:164
+#: .././includes/widget.php:71 ../includes/admin.php:76
+#: ../includes/admin.php:164 ../includes/widget.php:71
+msgid "Phone"
+msgstr "Téléphone"
+
+#: .././includes/admin.php:81 .././includes/admin.php:169
+#: ../includes/admin.php:81 ../includes/admin.php:169
+msgid "Fax"
+msgstr "Fax"
+
+#: .././includes/admin.php:86 .././includes/admin.php:174
+#: ../includes/admin.php:86 ../includes/admin.php:174
+msgid "Email"
+msgstr "Email"
+
+#: .././includes/admin.php:91 .././includes/admin.php:179
+#: ../includes/admin.php:91 ../includes/admin.php:179
+msgid "Facebook page"
+msgstr "Page Facebook"
+
+#: .././includes/admin.php:96 .././includes/admin.php:184
+#: ../includes/admin.php:96 ../includes/admin.php:184
+msgid "Twitter page"
+msgstr "Page Twitter"
+
+#: .././includes/admin.php:101 .././includes/admin.php:189
+#: ../includes/admin.php:101 ../includes/admin.php:189
+msgid "Google plus page"
+msgstr "Page Google plus"
+
+#: .././includes/admin.php:106 .././includes/admin.php:194
+#: ../includes/admin.php:106 ../includes/admin.php:194
+msgid "Linkedin page"
+msgstr "Page Linkedin"
+
+#: .././includes/admin.php:111 .././includes/admin.php:199
+#: ../includes/admin.php:111 ../includes/admin.php:199
+msgid "Instagram page"
+msgstr "Page instagram"
+
+#: .././includes/widget.php:11 ../includes/widget.php:11
+msgid "Shows contact data"
+msgstr "Affiche les données de contact"
+
+#: .././includes/widget.php:13 ../includes/widget.php:13
+msgid "Show contact data"
+msgstr "Affiche les données de contact"
+
+#: .././includes/widget.php:68 ../includes/widget.php:68
+msgid "All rights reserved"
+msgstr "Tous droits réservés"
+
+#~ msgid "Facebook settings"
+#~ msgstr "Paramètres Facebook"
+
+#~ msgid "Facebook parameters"
+#~ msgstr "Paramètres Facebook"
+
+#~ msgid "Page url"
+#~ msgstr "URL de la page Facebook"
+
+#~ msgid "Facebook App ID"
+#~ msgstr "Facebook App ID"
+
+#~ msgid "Facebook App secret"
+#~ msgstr "Facebook App secret"
+
+#~ msgid "Show number of FB likes block"
+#~ msgstr "Montrer le bloc 'nombre de likes fb'"
+
+#~ msgid "Show number of FB Likes"
+#~ msgstr "Montrer le nombre de likes Facebook"
+
+#~ msgid "Like"
+#~ msgstr "Like"
+
+#~ msgid "Select image"
+#~ msgstr "Sélectionner une image"
+
+#~ msgid "Remove image"
+#~ msgstr "Retirer une image"
+
+#~ msgid "Show \"join us on FB\" block"
+#~ msgstr "Montrer le bloc \"Nous rejoindre\" "
+
+#~ msgid "Join us"
+#~ msgstr "Rejoignez-nous"
