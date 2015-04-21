@@ -4,7 +4,14 @@ WP plugin for global contact data
 - Admin page to add contact data like address, phone, Facebook page, etc.
 - Multilingual support
 - Includes widgets to customize
-- FB app ID and App Secret support for widgets displaying number of likes and FB join app 
+- FB app ID and App Secret support
+- Widgets: FB Like box (with number of likes); FB Join Box; Contact data box
+- New: Easily stylable Google maps generated from your adress. Just display it with 
+<code>
+<?php echo display_map(); ?>
+or
+[display-map]
+<code>
 - Icons work if you're using svg xlink in your theme
 <code>
 <svg class="chicon">
@@ -26,3 +33,7 @@ get_option('katYoutubePage');
 get_option('katGplusPage');
 get_option('katLinkedinPage');
 get_option('katInstagramPage');
+
+To add:
+
+Youtube and Flickr channels support

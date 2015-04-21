@@ -2,14 +2,22 @@
 /**
  * Plugin Name: Contact Data management from Kat
  * Plugin URI: 
- * Description: This plugin adds a Contact Data management page and some Facebook data (Likes, etc.).
- * Version: 1.1
+ * Description: This plugin adds a Contact Data management page and some Facebook data (Likes, etc.). New: easily stylable google maps support from your address. 
+ * Version: 2
  * Author: Catherine Arnould
  * Author URI: 
  * License: GPL2
  */
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 define('MY_PLUGIN_PATH', plugin_dir_path(__FILE__));
+
+add_shortcode('display-map', 'display_map');
+
+function display_map() {
+    include_once(MY_PLUGIN_PATH.'includes/map.php');
+    $map = new Kat_Map;
+    return $map::init();
+}
 
 new Kat_Contact_Plugin();
 
@@ -32,8 +40,8 @@ class Kat_Contact_Plugin
         add_action('plugins_loaded', array(&$this, 'load_textdomain'));
         add_action('admin_menu', array(&$this,'my_plugin_admin'));
         add_action('widgets_init', array(&$this, 'register_widget'));
+        add_action( 'wp_enqueue_scripts', array( &$this, 'map_scripts' ) );
     }
-
     /**
      * 
     */
@@ -75,6 +83,15 @@ class Kat_Contact_Plugin
     function my_plugin_admin() {
         include_once(MY_PLUGIN_PATH.'includes/admin.php');
         $admin = new My_Plugin_Admin;
+    }
+
+
+    public function map_scripts()
+    {
+        wp_register_script('gmaps', 'http://maps.google.com/maps/api/js?sensor=false', array('jquery'));
+        wp_enqueue_script('gmaps');
+        wp_register_script('infobox', plugins_url('includes/js/infobox.js', __FILE__), array('jquery'));
+        wp_enqueue_script('infobox');
     }
 }
 ?>

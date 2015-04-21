@@ -12,9 +12,7 @@ class ContactData extends WP_Widget {
 
     $this->WP_Widget('ContactData', __('Show contact data', 'site'), $widget_ops);
     $this->alt_option_name = 'ContactData';
-    $this->itw_defaults = array(
-            'image_id' => 0
-    );
+    
     $this->company = get_option('katCompany');
     $this->address = get_option('katAddress');
     $this->zipTown = get_option('katZipTown');
@@ -62,7 +60,7 @@ class ContactData extends WP_Widget {
     echo '<div class="widget">';
 
     echo '<div class="widget-content contact-content uk-text-center">';
-    echo '<a href="' . site_url() . '"><img src="'. get_stylesheet_directory_uri() . '/images/logo-footer.svg" alt="" /></a>';
+    //echo '<a href="' . site_url() . '"><img src="'. get_stylesheet_directory_uri() . '/images/logo-footer.svg" alt="" /></a>';
     
     echo '<p class="no-m-t">© <a href="' . site_url() . '">' . $this->company . '</a> &ndash; ' . __('All rights reserved', 'plugin') . '<br />'; 
     echo $this->address  . '<br />'; 
@@ -83,6 +81,22 @@ class ContactData extends WP_Widget {
 
     $cache[$args['widget_id']] = ob_get_flush();
     wp_cache_set('contactData', $cache, 'widget');
+  }
+
+  function hide_email($email) { 
+    $character_set = '+-.0123456789@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz';
+    $key = str_shuffle($character_set); $cipher_text = ''; $id = 'e'.rand(1,999999999);
+
+    for ($i=0;$i<strlen($email);$i+=1) $cipher_text.= $key[strpos($character_set,$email[$i])];
+
+    $script = 'var a="'.$key.'";var b=a.split("").sort().join("");var c="'.$cipher_text.'";var d="";';
+    $script.= 'for(var e=0;e<c.length;e++)d+=b.charAt(a.indexOf(c.charAt(e)));';
+    $script.= 'document.getElementById("'.$id.'").innerHTML="<a href=\\"mailto:"+d+"\\">"+d+"</a>"';
+    $script = "eval(\"".str_replace(array("\\",'"'),array("\\\\",'\"'), $script)."\")"; 
+    $script = '<script type="text/javascript">/*<![CDATA[*/'.$script.'/*]]>*/</script>';
+
+    return '<span id="'.$id.'"></span>'.$script;
+
   }
 
 
@@ -106,11 +120,6 @@ class ContactData extends WP_Widget {
   }
 
   function form($instance) {
-    $image_id = (int)(isset($instance['image_id']) ? $instance['image_id'] : $this->itw_defaults['image_id']);
-    if($image_id !== 0)
-            $image = wp_get_attachment_image_src($image_id, 'thumbnail', FALSE);
-        else
-            $image[0] = '';
     foreach($this->fields as $name => $label) {
       ${$name} = isset($instance[$name]) ? esc_attr($instance[$name]) : '';
     ?>
@@ -126,8 +135,7 @@ class ContactData extends WP_Widget {
 class FacebookLike extends WP_Widget {
     private $itw_defaults = array();
     private $fields = array(
-      'button'          => 'Button text (optional)', 
-      'image_id'            => 'Picture'
+      'button'          => 'Button text (optional)'
     );
 
     private $fbUrl = '';
@@ -137,9 +145,7 @@ class FacebookLike extends WP_Widget {
 
     $this->WP_Widget('facebookLike', __('Show number of FB Likes', 'site'), $widget_ops);
     $this->alt_option_name = 'facebookLike';
-    $this->itw_defaults = array(
-            'image_id' => 0
-    );
+    
     $this->fbUrl = get_option('katFbPage');
 
     add_action('save_post', array(&$this, 'flush_widget_cache'));
@@ -174,16 +180,9 @@ class FacebookLike extends WP_Widget {
     foreach($this->fields as $name => $label) {
       if (!isset($instance[$name])) { $instance[$name] = ''; }
     }
-    $image = wp_get_attachment_image_src($instance['image_id'], 'masonry image', FALSE);
-    $image = apply_filters('itw_widget_image', $image, $instance);
-    $timthumb_script = get_template_directory_uri() . '/external/timthumb.php?src=';
-    $timthumb_params = '&amp;q=80&amp;w=' . $w . '&amp;h=' . $h . '&amp;f=2';
+    
     
     echo $before_widget;
-    echo '<div class="widget-bg" style="background-image:url('.$timthumb_script . $image[0] . $timthumb_params.')">';
-
-
-    echo '</div>';
     echo '<div class="widget-content facebook-content">';
    echo '<div class="widget-link">';
 
@@ -193,13 +192,13 @@ class FacebookLike extends WP_Widget {
     echo '<div class="fb-button-place">
             <div class="fb-like" data-href="'. $this->fbUrl .'" data-layout="button" data-action="like" data-show-faces="false" data-share="false">
             </div>
-            <div class="fb-like" data-href="'. $this->fbUrl .'" data-layout="button" data-action="like" data-show-faces="false" data-share="false">
+            <!--div class="fb-like" data-href="'. $this->fbUrl .'" data-layout="button" data-action="like" data-show-faces="false" data-share="false">
             </div>
             <div class="fb-like" data-href="'. $this->fbUrl .'" data-layout="button" data-action="like" data-show-faces="false" data-share="false">
             </div>
             <div class="fb-like" data-href='. $this->fbUrl .'" data-layout="button" data-action="like" data-show-faces="false" data-share="false">
             </div>
-            <span class="uk-button uk-button-primary uk-button-round">'.$btn.'</span>
+            <span class="uk-button uk-button-primary uk-button-round">'.$btn.'</span -->
             </div>';  
        
     echo '</div></div><!--/facebook-content-->';
@@ -216,16 +215,14 @@ class FacebookLike extends WP_Widget {
 
         $fbId = substr($this->fbUrl, 25);
         
-        $finfo = json_decode(file_get_contents('http://graph.facebook.com/'.$fbId));
+        $finfo = @json_decode(file_get_contents('http://graph.facebook.com/'.$fbId));
 
         $fbcount = $finfo->likes / 1000;
 
             $html = '<a class="uk-h1" href="'.$this->fbUrl.'">
-                               <span class="uk-icon-circled">
-                                  <svg class="chicon">
-                                      <use xlink:href="' .get_stylesheet_directory_uri() . '/images/icons.svg#chicon-facebook" />
-                                  </svg>
-                                </span>'.
+                                <span class="chicon">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M12 7.247V13H8v7h4v20h10V20h6s.7-3.47 1-7h-7V8.125C22 7.437 23.125 7 24.178 7H29V0h-6.736c-10.25 0-10.008 6.24-10.008 7.247H12z" fill="currentColor"/></svg>
+                                  </span>'.
                                $fbcount
                             .'K</a>';
 
@@ -252,11 +249,7 @@ class FacebookLike extends WP_Widget {
   }
 
   function form($instance) {
-    $image_id = (int)(isset($instance['image_id']) ? $instance['image_id'] : $this->itw_defaults['image_id']);
-    if($image_id !== 0)
-            $image = wp_get_attachment_image_src($image_id, 'thumbnail', FALSE);
-        else
-            $image[0] = '';
+   
     foreach($this->fields as $name => $label) {
       ${$name} = isset($instance[$name]) ? esc_attr($instance[$name]) : '';
     ?>
@@ -267,17 +260,7 @@ class FacebookLike extends WP_Widget {
     </p>
     <?php
     }
-    echo '<div>
-                <div class="itw-image-buttons">
-                    <input class="itw_upload_image_id" type="hidden" name="'.$this->get_field_name('image_id').'" value="'.$image_id.'" />
-                    <input class="itw_upload_image_button button button-secondary" type="button" value="'.__('Select image', 'image-text-widget').'" />
-                    <input class="itw_turn_off_image_button button button-secondary" type="button" value="'.__('Remove image', 'image-text-widget').'" '.disabled(0, $image_id, FALSE).' />
-                    <span class="itw-spinner"></span>
-                </div>
-                <div class="itw-image-preview">
-                    '.($image[0] !== '' ? '<img src="'.$image[0].'" alt="" />' : '<img src="" alt="" style="display: none;" />').'
-                </div>
-            </div>'; 
+    
   }
 }
 
@@ -329,7 +312,14 @@ class facebookJoin extends WP_Widget {
 
 
     
-    echo '<div class="fb-like-box" data-href="'.get_option('katFbPage').'" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>';  
+    echo '<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.3&appId='.get_option('kat_facebook_app_id').'";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, "script", "facebook-jssdk"));</script>
+    <div class="fb-like-box" data-href="'.get_option('katFbPage').'" data-colorscheme="dark" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>';  
        
     echo '</div></div><!--/facebook-content-->';
     
