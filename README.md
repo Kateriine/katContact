@@ -1,4 +1,4 @@
-# KatContact
+# KatContact 2.0
 WP plugin for global contact data
 
 - Admin page to add contact data like address, phone, Facebook page, etc.
