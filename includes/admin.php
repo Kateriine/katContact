@@ -306,7 +306,7 @@ class My_Plugin_Admin {
          
         </form>
         </div>
-    <?
+    <?php
 
     }
 }
