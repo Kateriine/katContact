@@ -29,6 +29,7 @@ class SocialData extends WP_Widget {
     $this->gplusPage = apply_filters( 'wpml_translate_single_string', get_option("katGplusPage"), 'KatContact Data', 'katGplusPage' );
     $this->linkedinPage = apply_filters( 'wpml_translate_single_string', get_option("katLinkedinPage"), 'KatContact Data', 'katLinkedinPage' );
     $this->instagramPage = apply_filters( 'wpml_translate_single_string', get_option("katInstagramPage"), 'KatContact Data', 'katInstagramPage' );
+    $this->flickrPage = apply_filters( 'wpml_translate_single_string', get_option("katFlickrPage"), 'KatContact Data', 'katFlickrPage' );
     $this->pinterestPage = apply_filters( 'wpml_translate_single_string', get_option("katPinterestPage"), 'KatContact Data', 'katPinterestPage' );
     add_action('save_post', array(&$this, 'flush_widget_cache'));
     add_action('deleted_post', array(&$this, 'flush_widget_cache'));
@@ -85,6 +86,8 @@ class SocialData extends WP_Widget {
       echo '<li><a href="'.$this->linkedinPage.'"><i class="uk-icon uk-icon-linkedin"></i></a></li>';
     if($this->instagramPage !== '')
       echo '<li><a href="'.$this->instagramPage.'"><i class="uk-icon uk-icon-instagram"></i></a></li>';
+    if($this->flickrPage !== '')
+      echo '<li><a href="'.$this->flickrPage.'"><i class="uk-icon uk-icon-flickr"></i></a></li>';
     if($this->pinterestPage !== '')
       echo '<li><a href="'.$this->pinterestPage.'"><i class="uk-icon uk-icon-pinterest"></i></a></li>';
     echo '</ul>';
