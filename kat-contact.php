@@ -19,9 +19,14 @@ function display_map() {
     return $map::init();
 }
 
-function display_flickr($numberofPics=2) {
+function display_flickr($numberofPics=2, $numberofCols=2, $flickrFeed = '', $displayTitle = false) {
     include_once(MY_PLUGIN_PATH.'includes/flickr.php');
-    $flickr = new Flickr_Feed($numberofPics);
+    if($flickrFeed == '')
+       $set = apply_filters( 'wpml_translate_single_string', get_option("katFlickrPage"), 'KatContact Data', 'katFlickrPage' );
+   else
+        $set = substr($flickrFeed, -18, -1);
+   
+    $flickr = new Flickr_Feed($set, $numberofPics, $numberofCols, $displayTitle);
     return $flickr->init();
 }
 
@@ -29,6 +34,52 @@ function display_twitter($hashtag='#GoT', $numOfTweets=3) {
     include_once(MY_PLUGIN_PATH.'includes/twitter_feed.php');
     $twitter = new KatTwitterSearch($hashtag, $numOfTweets); 
     return $twitter->getTSearch();
+}
+
+function getKatCompany(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katCompany"), 'KatContact Data', 'katCompany' );
+}
+function getKatAddress(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katAddress"), 'KatContact Data', 'katAddress' );
+}
+function getKatZipTown(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katZipTown"), 'KatContact Data', 'katZipTown' );
+}
+function getKatCountry(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katCountry"), 'KatContact Data', 'katCountry' );
+}
+function getKatPhone(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katPhone"), 'KatContact Data', 'katPhone' );
+}
+function getKatFax(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katFax"), 'KatContact Data', 'katCompany' );
+}
+function getKatEmail(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katEmail"), 'KatContact Data', 'katEmail' );
+}
+function getKatFbPage(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katFbPage"), 'KatContact Data', 'katFbPage' );
+}
+function getKatTwitterPage(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katTwitterPage"), 'KatContact Data', 'katTwitterPage' );
+}
+function getKatYoutubePage(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katYoutubePage"), 'KatContact Data', 'katYoutubePage' );
+}
+function getKatGplusPage(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katGplusPage"), 'KatContact Data', 'katGplusPage' );
+}
+function getKatLinkedinPage(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katLinkedinPage"), 'KatContact Data', 'katLinkedinPage' );
+}
+function getKatInstagramPage(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katInstagramPage"), 'KatContact Data', 'katInstagramPage' );
+}
+function getKatFlickrPage(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katFlickrPage"), 'KatContact Data', 'katFlickrPage' );
+}
+function getKatPinterestPage(){
+    return apply_filters( 'wpml_translate_single_string', get_option("katPinterestPage"), 'KatContact Data', 'katPinterestPage' );
 }
 
 

@@ -6,9 +6,15 @@ class Flickr_Feed{
     //     add_action('wp_head', array(&$this, 'map_scripts'));
     //     $this->map = map();
     // }
-    static $numPics;
-    public function __construct($numberofPics=2)  {  
-        $this->numPics = $numberofPics;
+    private $numPics;
+    private $numCols;
+    private $fFeed;
+    private $dTitle;
+    public function __construct($numberofPics=2, $numberofCols=2, $displayTitle=false, $flickrFeed='')  {  
+        $this->numPics = $numberofPics;  
+        $this->numCols = $numberofCols;  
+        $this->fFeed = $flickrFeed;  
+        $this->dTitle = $displayTitle;
     }
     public function init() {   
         return $this->flickr_f();
@@ -16,33 +22,59 @@ class Flickr_Feed{
         
     private function flickr_f(){ 
 
-          require_once( 'phpflickr/phpFlickr.php' );
+        require_once( plugin_dir_path(__FILE__).'phpflickr/phpFlickr.php' );
 
-          global $post;
-          global $WP_Views;
-          $output='';
-          $apiKey = apply_filters( 'wpml_translate_single_string', get_option("katFlickRApiKey"), 'KatContact Data', 'katFlickRApiKey' );
-          $apiSecret = apply_filters( 'wpml_translate_single_string', get_option("katFlickRApiSecret"), 'KatContact Data', 'katFlickRApiSecret' );
-          $userPage = apply_filters( 'wpml_translate_single_string', get_option("katFlickrPage"), 'KatContact Data', 'katFlickrPage' );
-          $f = new phpFlickr($apiKey, $apiSecret);
-          $userInfo = $f->urls_lookupUser($userPage);
-          $userId = $userInfo['id'];
-          $photoset = $f->people_getPhotos($userId, array('per_page' => $this->numPics));
+        global $post;
+        global $WP_Views;
+        $output='';
+        $apiKey = apply_filters( 'wpml_translate_single_string', get_option("katFlickRApiKey"), 'KatContact Data', 'katFlickRApiKey' );
+        $apiSecret = apply_filters( 'wpml_translate_single_string', get_option("katFlickRApiSecret"), 'KatContact Data', 'katFlickRApiSecret' );
+        if($this->fFeed != '') {
+            $set = $this->fFeed;  
+            if(substr($set, -1) != '/'){
+                $set .= '/';
+            }
+            $feed = substr($set, -18, -1);
 
-          if(isset($photoset['photos']['photo'])) {
-            $output='<div class="uk-grid uk-grid-collapse">';
-              foreach($photoset['photos']['photo'] as $photo) {
+            $f = new phpFlickr($apiKey, $apiSecret);
+            $userInfo = $f->urls_lookupUser($feed);
+            $photoset = $f->photosets_getPhotos($feed, 3, 'machine_tags,o_dims', $this->numPics, 1);
+            if($this->dTitle) $output .= $photoset['photoset']['title'];
+            if(isset($photoset['photoset']['photo'])) {
+              $output .='<div class="uk-grid uk-grid-collapse">';
+              foreach($photoset['photoset']['photo'] as $photo) {
                 $photo_url = $f->buildPhotoURL($photo, 'large');
                 //$photo_url2 = $f->buildPhotoURL($photo, 'large_square');
-                $output .= '<div class="uk-width-1-'.$this->numPics.'">';
+                $output .= '<div class="uk-width-1-'.$this->numCols.'">';
                 $output .= '<a class="fancybox" href="'.$photo_url.'" data-fancybox-group="gallery" title="'.$photo['title'].'"><span class="flickrImg" style="background-image:url('.$photo_url.');"></span></a>';
                 $output .= '</div>';
 
               }
-            $output .= '</div>';
+              $output .= '</div>';
+            }
+        }
+        else {
+            $feed = apply_filters( 'wpml_translate_single_string', get_option("katFlickrPage"), 'KatContact Data', 'katFlickrPage' );
 
-          }
-          return $output; 
+            $f = new phpFlickr($apiKey, $apiSecret);
+            $userInfo = $f->urls_lookupUser($feed);
+            $userId = $userInfo['id'];
+            $photoset = $f->people_getPhotos($userId, array('per_page' => $this->numPics));
+            if(isset($photoset['photos']['photo'])) {
+                $output='<div class="uk-grid uk-grid-collapse">';
+                  foreach($photoset['photos']['photo'] as $photo) {
+                    $photo_url = $f->buildPhotoURL($photo, 'large');
+                    //$photo_url2 = $f->buildPhotoURL($photo, 'large_square');
+                    $output .= '<div class="uk-width-1-'.$this->numCols.'">';
+                    $output .= '<a class="fancybox" href="'.$photo_url.'" data-fancybox-group="gallery" title="'.$photo['title'].'"><span class="flickrImg" style="background-image:url('.$photo_url.');"></span></a>';
+                    $output .= '</div>';
+
+                  }
+                $output .= '</div>';
+
+            }
+        }
+        return $output; 
     }
 
 }

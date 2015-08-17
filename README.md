@@ -13,7 +13,9 @@ or
 - NEW: WPML support
 - NEW: Flickr pictures display with 
 <code>
-	echo display_flickr($numberofpics);</code>
+	echo display_flickr($numberofPics=2, $numberofCols=2, $displayTitle=false, $flickrFeed='');</code>
+    Number of pictures, Number of columns
+    If you want to display one album only: you can display the title (optional, true or false - default = false). Then, add the flicker feed (mandatory for album, don't put anything if you want to display all user's last pictures).
 - NEW: Twitter hashtag search feed with 
 <code>
 	echo display_twitter($hashtag, $bumberofTweets);
