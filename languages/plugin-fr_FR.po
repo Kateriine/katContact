@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: plugin\n"
-"POT-Creation-Date: 2015-03-25 10:21+0100\n"
-"PO-Revision-Date: 2015-03-25 10:23+0100\n"
+"POT-Creation-Date: 2015-08-17 15:44+0200\n"
+"PO-Revision-Date: 2015-08-17 15:44+0200\n"
 "Last-Translator: Bartosz Arendt <info@dfactory.eu>\n"
 "Language-Team: Catherine <catherine@spade.be>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.4\n"
 "X-Poedit-KeywordsList: gettext;gettext_noop;__;_e;esc_attr__;esc_attr_e;"
 "_n:1,2;_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
@@ -18,85 +18,232 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: ../.\n"
 
-#: .././includes/admin.php:12 .././includes/admin.php:42
-#: .././includes/admin.php:125 ../includes/admin.php:12
-#: ../includes/admin.php:42 ../includes/admin.php:125
+#: .././includes/admin.php:12 .././includes/admin.php:78
+#: .././includes/admin.php:111 ../includes/admin.php:12
+#: ../includes/admin.php:78 ../includes/admin.php:111
 msgid "Contact data"
 msgstr "Données de contact"
 
-#: .././includes/admin.php:56 .././includes/admin.php:139
-#: ../includes/admin.php:56 ../includes/admin.php:139
+#: .././includes/admin.php:15 .././includes/admin.php:280
+#: ../includes/admin.php:15 ../includes/admin.php:280
+msgid "Map data"
+msgstr "Données de la carte"
+
+#: .././includes/admin.php:95 .././includes/admin.php:321
+#: ../includes/admin.php:95 ../includes/admin.php:321
+msgid "Settings saved"
+msgstr "Paramètres sauvegardés"
+
+#: .././includes/admin.php:115 ../includes/admin.php:115
 msgid "Company"
 msgstr "Société"
 
-#: .././includes/admin.php:61 .././includes/admin.php:144
-#: ../includes/admin.php:61 ../includes/admin.php:144
+#: .././includes/admin.php:120 ../includes/admin.php:120
 msgid "Address"
 msgstr "Adresse"
 
-#: .././includes/admin.php:66 .././includes/admin.php:149
-#: .././includes/admin.php:154 ../includes/admin.php:66
-#: ../includes/admin.php:149 ../includes/admin.php:154
+#: .././includes/admin.php:125 ../includes/admin.php:125
 msgid "Zip and town"
 msgstr "CP et ville"
 
-#: .././includes/admin.php:71 .././includes/admin.php:159
-#: ../includes/admin.php:71 ../includes/admin.php:159
+#: .././includes/admin.php:130 ../includes/admin.php:130
 msgid "Country"
 msgstr "Pays"
 
-#: .././includes/admin.php:76 .././includes/admin.php:164
-#: .././includes/widget.php:71 ../includes/admin.php:76
-#: ../includes/admin.php:164 ../includes/widget.php:71
+#: .././includes/admin.php:135 .././includes/widget.php:221
+#: ../includes/admin.php:135 ../includes/widget.php:221
 msgid "Phone"
 msgstr "Téléphone"
 
-#: .././includes/admin.php:81 .././includes/admin.php:169
-#: ../includes/admin.php:81 ../includes/admin.php:169
+#: .././includes/admin.php:140 ../includes/admin.php:140
 msgid "Fax"
 msgstr "Fax"
 
-#: .././includes/admin.php:86 .././includes/admin.php:174
-#: ../includes/admin.php:86 ../includes/admin.php:174
+#: .././includes/admin.php:145 ../includes/admin.php:145
 msgid "Email"
 msgstr "Email"
 
-#: .././includes/admin.php:91 .././includes/admin.php:179
-#: ../includes/admin.php:91 ../includes/admin.php:179
+#: .././includes/admin.php:155 ../includes/admin.php:155
 msgid "Facebook page"
 msgstr "Page Facebook"
 
-#: .././includes/admin.php:96 .././includes/admin.php:184
-#: ../includes/admin.php:96 ../includes/admin.php:184
+#: .././includes/admin.php:159 ../includes/admin.php:159
+msgid "Facebook App ID"
+msgstr "Facebook App ID"
+
+#: .././includes/admin.php:164 ../includes/admin.php:164
+msgid "Facebook App secret"
+msgstr "Facebook App secret"
+
+#: .././includes/admin.php:174 ../includes/admin.php:174
 msgid "Twitter page"
 msgstr "Page Twitter"
 
-#: .././includes/admin.php:101 .././includes/admin.php:189
-#: ../includes/admin.php:101 ../includes/admin.php:189
+#: .././includes/admin.php:179 ../includes/admin.php:179
+msgid "Twitter consumer key"
+msgstr "Twitter consumer key"
+
+#: .././includes/admin.php:184 ../includes/admin.php:184
+msgid "Twitter consumer secret"
+msgstr "Twitter consumer secret"
+
+#: .././includes/admin.php:189 ../includes/admin.php:189
+msgid "Twitter OAuth token"
+msgstr "Twitter OAuth token"
+
+#: .././includes/admin.php:194 ../includes/admin.php:194
+msgid "Twitter OAuth secret"
+msgstr "Twitter OAuth secret"
+
+#: .././includes/admin.php:204 ../includes/admin.php:204
+msgid "Youtube page"
+msgstr "Page Youtube"
+
+#: .././includes/admin.php:214 ../includes/admin.php:214
 msgid "Google plus page"
 msgstr "Page Google plus"
 
-#: .././includes/admin.php:106 .././includes/admin.php:194
-#: ../includes/admin.php:106 ../includes/admin.php:194
+#: .././includes/admin.php:224 ../includes/admin.php:224
 msgid "Linkedin page"
 msgstr "Page Linkedin"
 
-#: .././includes/admin.php:111 .././includes/admin.php:199
-#: ../includes/admin.php:111 ../includes/admin.php:199
+#: .././includes/admin.php:234 ../includes/admin.php:234
 msgid "Instagram page"
 msgstr "Page instagram"
 
-#: .././includes/widget.php:11 ../includes/widget.php:11
+#: .././includes/admin.php:243 ../includes/admin.php:243
+msgid "FlickR page"
+msgstr "Page FlickR"
+
+#: .././includes/admin.php:247 ../includes/admin.php:247
+msgid "FlickR API Key"
+msgstr "FlickR API Key"
+
+#: .././includes/admin.php:251 ../includes/admin.php:251
+msgid "FlickR API Secret"
+msgstr "FlickR API Secret"
+
+#: .././includes/admin.php:260 ../includes/admin.php:260
+msgid "Pinterest page"
+msgstr "Page Pinterest"
+
+#: .././includes/admin.php:281 ../includes/admin.php:281
+msgid ""
+"I don't like plugins injecting small files in the html, not good for "
+"optimization, so you have to add some stuff manually."
+msgstr ""
+"Je n'aime pas les plugins qui injectent des fichiers dans le html; ce n'est "
+"pas bon pour l'optimisation. Vous devez donc ajouter quelques trucs "
+"\"manuellement\"."
+
+#: .././includes/admin.php:282 ../includes/admin.php:282
+msgid ""
+"For a custom icon: just add 2 icons called <strong>markerIcon.png</strong> "
+"and <strong>markerIcon.svg</strong> in your theme's \"images\" folder:"
+msgstr ""
+"Pour une icône customisée: ajoutez simplement deux icônes appelées "
+"<strong>markerIcon.png</strong> et <strong>markerIcon.svg</strong> dans le "
+"dossier \"images\" de votre thème."
+
+#: .././includes/admin.php:283 ../includes/admin.php:283
+msgid "For the css: just add this in your css and customize:"
+msgstr "Pour la css: ajoutez simplement ceci dans votre css, et customisez:"
+
+#: .././includes/admin.php:327 ../includes/admin.php:327
+msgid "Water"
+msgstr "Eau"
+
+#: .././includes/admin.php:333 ../includes/admin.php:333
+msgid "Water labels"
+msgstr "Labels eau"
+
+#: .././includes/admin.php:339 ../includes/admin.php:339
+msgid "Landscape"
+msgstr "Paysages"
+
+#: .././includes/admin.php:345 ../includes/admin.php:345
+msgid "Landscape labels"
+msgstr "Labels paysages"
+
+#: .././includes/admin.php:352 ../includes/admin.php:352
+msgid "Roads"
+msgstr "Routes"
+
+#: .././includes/admin.php:358 ../includes/admin.php:358
+msgid "Roads strokes"
+msgstr "Couleur des routes"
+
+#: .././includes/admin.php:364 ../includes/admin.php:364
+msgid "Highways"
+msgstr "Autoroutes"
+
+#: .././includes/admin.php:370 ../includes/admin.php:370
+msgid "Administrative labels"
+msgstr "Labels administratifs"
+
+#: .././includes/admin.php:376 ../includes/admin.php:376
+msgid "Heuuu. Green?"
+msgstr "Heuuuu. Vert?"
+
+#: .././includes/admin.php:382 ../includes/admin.php:382
+msgid "Greens labels"
+msgstr "Labels... vert"
+
+#: .././includes/admin.php:388 ../includes/admin.php:388
+msgid "Greens labels strokes"
+msgstr "Lignes labels .... verts"
+
+#: .././includes/admin.php:394 ../includes/admin.php:394
+msgid "Parks"
+msgstr "Parcs"
+
+#: .././includes/map.php:28 ../includes/map.php:28
+msgid "See on Google Maps"
+msgstr "Voir sur Google Maps"
+
+#: .././includes/widget.php:14 ../includes/widget.php:14
+msgid "Shows social data"
+msgstr "Affiche les données sociales"
+
+#: .././includes/widget.php:16 ../includes/widget.php:16
+msgid "Show social links"
+msgstr "Afficher les liens sociaux"
+
+#: .././includes/widget.php:162 ../includes/widget.php:162
 msgid "Shows contact data"
 msgstr "Affiche les données de contact"
 
-#: .././includes/widget.php:13 ../includes/widget.php:13
+#: .././includes/widget.php:164 ../includes/widget.php:164
 msgid "Show contact data"
 msgstr "Affiche les données de contact"
 
-#: .././includes/widget.php:68 ../includes/widget.php:68
+#: .././includes/widget.php:218 ../includes/widget.php:218
 msgid "All rights reserved"
 msgstr "Tous droits réservés"
+
+#: .././includes/widget.php:296 ../includes/widget.php:296
+msgid "Show number of FB likes block"
+msgstr "Montrer le bloc 'nombre de likes fb'"
+
+#: .././includes/widget.php:298 ../includes/widget.php:298
+msgid "Show number of FB Likes"
+msgstr "Montrer le nombre de likes Facebook"
+
+#: .././includes/widget.php:338 .././includes/widget.php:459
+#: ../includes/widget.php:338 ../includes/widget.php:459
+msgid "Join us"
+msgstr "Rejoignez-nous"
+
+#: .././includes/widget.php:428 .././includes/widget.php:430
+#: ../includes/widget.php:428 ../includes/widget.php:430
+msgid "Show \"join us on FB\" block"
+msgstr "Montrer le bloc \"Nous rejoindre\" "
+
+#~ msgid "FlickR API Secret page"
+#~ msgstr "FlickR API Secret page"
+
+#~ msgid "Like"
+#~ msgstr "Like"
 
 #~ msgid "Facebook settings"
 #~ msgstr "Paramètres Facebook"
@@ -107,29 +254,8 @@ msgstr "Tous droits réservés"
 #~ msgid "Page url"
 #~ msgstr "URL de la page Facebook"
 
-#~ msgid "Facebook App ID"
-#~ msgstr "Facebook App ID"
-
-#~ msgid "Facebook App secret"
-#~ msgstr "Facebook App secret"
-
-#~ msgid "Show number of FB likes block"
-#~ msgstr "Montrer le bloc 'nombre de likes fb'"
-
-#~ msgid "Show number of FB Likes"
-#~ msgstr "Montrer le nombre de likes Facebook"
-
-#~ msgid "Like"
-#~ msgstr "Like"
-
 #~ msgid "Select image"
 #~ msgstr "Sélectionner une image"
 
 #~ msgid "Remove image"
 #~ msgstr "Retirer une image"
-
-#~ msgid "Show \"join us on FB\" block"
-#~ msgstr "Montrer le bloc \"Nous rejoindre\" "
-
-#~ msgid "Join us"
-#~ msgstr "Rejoignez-nous"

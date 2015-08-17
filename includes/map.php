@@ -1,15 +1,21 @@
 <?php
 if(!defined('ABSPATH')) exit; //exit if accessed directly
 
+$map= new Kat_Map;
+//$map::addMapScripts();
 class Kat_Map{
     // function __construct() {
     //     add_action('wp_head', array(&$this, 'map_scripts'));
     //     $this->map = map();
     // }
     public function __construct()  {
+        wp_register_script('gmaps', 'http://maps.google.com/maps/api/js?sensor=false', array('jquery'), '', false);
+        wp_enqueue_script('gmaps');
+        wp_register_script('infobox', plugins_url('js/infobox.js', __FILE__), array('jquery'), '', false);
+        wp_enqueue_script('infobox');
+                
     }
-    static function init(  ) {       
-
+    static function init(  ) { 
         return self::map();
     }
         
@@ -41,13 +47,13 @@ class Kat_Map{
                 // Create a simple map.
                
                 var geocoder = new google.maps.Geocoder();
-                    address = "' . get_option("katAddress") . ', ' . get_option("katZipTown") . '";
+                    address = "' . apply_filters( 'wpml_translate_single_string', get_option("katAddress"), 'KatContact Data', 'katAddress' ) . ', ' . apply_filters( 'wpml_translate_single_string', get_option("katZipTown"), 'KatContact Data', 'katZipTown' ) . '";
 
                 geocoder.geocode( { "address": address}, function(results, status) {
 
                     if (status == google.maps.GeocoderStatus.OK) {
-                        latitude = results[0].geometry.location.k;
-                        longitude = results[0].geometry.location.D;
+                        latitude = results[0].geometry.location.G;
+                        longitude = results[0].geometry.location.K;
                         styles = [{
                             "featureType":"water",
                             "stylers":[{"color":"'.get_option('katWaterColor').'"},{"visibility":"on"}]

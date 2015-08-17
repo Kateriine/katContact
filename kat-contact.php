@@ -1,25 +1,36 @@
 <?php
 /**
- * Plugin Name: Contact Data management from Kat
+ * Plugin Name: Identity Data management from Kat
  * Plugin URI: 
- * Description: This plugin adds a Contact Data management page and some Facebook data (Likes, etc.). New: easily stylable google maps support from your address. 
- * Version: 2
+ * Description: This plugin adds an Identity Data management page: contact data, social data (Likes, etc.). New: WPML support, Flicker pics display, Twitter search display. 
+ * Version: 3
  * Author: Catherine Arnould
  * Author URI: 
  * License: GPL2
  */
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 define('MY_PLUGIN_PATH', plugin_dir_path(__FILE__));
+$katContact = new Kat_Contact_Plugin();
 
 add_shortcode('display-map', 'display_map');
 
 function display_map() {
     include_once(MY_PLUGIN_PATH.'includes/map.php');
-    $map = new Kat_Map;
     return $map::init();
 }
 
-new Kat_Contact_Plugin();
+function display_flickr($numberofPics=2) {
+    include_once(MY_PLUGIN_PATH.'includes/flickr.php');
+    $flickr = new Flickr_Feed($numberofPics);
+    return $flickr->init();
+}
+
+function display_twitter($hashtag='#GoT', $numOfTweets=3) {
+    include_once(MY_PLUGIN_PATH.'includes/twitter_feed.php');
+    $twitter = new KatTwitterSearch($hashtag, $numOfTweets); 
+    return $twitter->getTSearch();
+}
+
 
 class Kat_Contact_Plugin
 {
@@ -40,8 +51,8 @@ class Kat_Contact_Plugin
         add_action('plugins_loaded', array(&$this, 'load_textdomain'));
         add_action('admin_menu', array(&$this,'my_plugin_admin'));
         add_action('widgets_init', array(&$this, 'register_widget'));
-        add_action( 'wp_enqueue_scripts', array( &$this, 'map_scripts' ) );
     }
+
     /**
      * 
     */
@@ -49,6 +60,7 @@ class Kat_Contact_Plugin
     {
         include_once(MY_PLUGIN_PATH.'includes/widget.php');
 
+        register_widget('SocialData'); 
         register_widget('ContactData'); 
         register_widget('FacebookJoin'); 
         register_widget('FacebookLike'); 
@@ -86,8 +98,7 @@ class Kat_Contact_Plugin
     }
 
 
-    public function map_scripts()
-    {
+    public function map_scripts() {
         wp_register_script('gmaps', 'http://maps.google.com/maps/api/js?sensor=false', array('jquery'));
         wp_enqueue_script('gmaps');
         wp_register_script('infobox', plugins_url('includes/js/infobox.js', __FILE__), array('jquery'));

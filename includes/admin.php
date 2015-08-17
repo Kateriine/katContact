@@ -43,9 +43,17 @@ class My_Plugin_Admin {
         register_setting( 'my-plugin-settings-group', 'kat_facebook_app_secret' );
         register_setting( 'my-plugin-settings-group', 'katYoutubePage' );
         register_setting( 'my-plugin-settings-group', 'katTwitterPage' );
+        register_setting( 'my-plugin-settings-group', 'kat_twitter_consumer_key' );
+        register_setting( 'my-plugin-settings-group', 'kat_twitter_consumer_secret' );
+        register_setting( 'my-plugin-settings-group', 'kat_twitter_oauth_token' );
+        register_setting( 'my-plugin-settings-group', 'kat_twitter_oauth_token_secret' );
         register_setting( 'my-plugin-settings-group', 'katGplusPage' );
         register_setting( 'my-plugin-settings-group', 'katLinkedinPage' );
         register_setting( 'my-plugin-settings-group', 'katInstagramPage' );
+        register_setting( 'my-plugin-settings-group', 'katFlickRPage' );
+        register_setting( 'my-plugin-settings-group', 'katFlickRApiKey' );
+        register_setting( 'my-plugin-settings-group', 'katFlickRApiSecret' );
+        register_setting( 'my-plugin-settings-group', 'katPinterestPage' );
         register_setting( 'map-parameters-group', 'katWaterColor' );
         register_setting( 'map-parameters-group', 'katWaterLabelColor' );
         register_setting( 'map-parameters-group', 'katWaterLabelStrokeColor' );
@@ -72,8 +80,16 @@ class My_Plugin_Admin {
             if (isset($_POST["submit"])) {
 
                 foreach ($_POST as $keyname=>$value) {
-                    if($keyname != 'submit')
+                    if($keyname != 'submit' ) {
                         update_option($keyname, $value);
+                        //print_r($_POST);
+                        if($keyname != '_wp_http_referer' && $keyname != '_wpnonce' && $keyname != 'option_page' && $keyname != 'action')
+                            do_action( 'wpml_register_single_string', 'KatContact Data', $keyname, $value );
+                        //WMPL
+
+                    }
+
+
                 }
                 echo '<div id="setting-error-settings_updated" class="updated settings-error"> 
 <p><strong>'. __('Settings saved', 'plugin').'.</strong></p></div>';
@@ -90,6 +106,11 @@ class My_Plugin_Admin {
             //Grab the value of a field using the get_option() function, passing it the option name as the first parameter:
             ?>
             <table class="form-table">
+                <tr valign="top">
+                    <th scope="row" colspan="2">
+                        <h2><?php _e('Contact data', 'plugin');?></h2>
+                    </th>
+                </tr>
                 <tr valign="top">
                 <th scope="row"><?php _e('Company', 'plugin'); ?></th>
                 <td><input type="text" name="katCompany" value="<?php echo esc_attr( get_option('katCompany') ); ?>" /></td>
@@ -124,6 +145,11 @@ class My_Plugin_Admin {
                 <th scope="row"><?php _e('Email', 'plugin'); ?></th>
                 <td><input type="text" name="katEmail" value="<?php echo esc_attr( get_option('katEmail') ); ?>" /></td>
                 </tr>
+                <tr valign="top">
+                    <th scope="row" colspan="2">
+                        <h2>Facebook</h2>
+                    </th>
+                </tr>
                 
                 <tr valign="top">
                 <th scope="row"><?php _e('Facebook page', 'plugin'); ?></th>
@@ -138,6 +164,11 @@ class My_Plugin_Admin {
                 <th scope="row"><?php _e('Facebook App secret', 'plugin'); ?></th>
                 <td><input type="text" name="kat_facebook_app_secret" value="<?php echo esc_attr( get_option('kat_facebook_app_secret') ); ?>" /></td>
                 </tr>
+                <tr valign="top">
+                    <th scope="row" colspan="2">
+                        <h2>Twitter</h2>
+                    </th>
+                </tr>
                 
                 <tr valign="top">
                 <th scope="row"><?php _e('Twitter page', 'plugin'); ?></th>
@@ -145,23 +176,89 @@ class My_Plugin_Admin {
                 </tr>
 
                 <tr valign="top">
+                <th scope="row"><?php _e('Twitter consumer key', 'plugin'); ?></th>
+                <td><input type="text" name="kat_twitter_consumer_key" value="<?php echo esc_attr( get_option('kat_twitter_consumer_key') ); ?>" /></td>
+                </tr>
+
+                <tr valign="top">
+                <th scope="row"><?php _e('Twitter consumer secret', 'plugin'); ?></th>
+                <td><input type="text" name="kat_twitter_consumer_secret" value="<?php echo esc_attr( get_option('kat_twitter_consumer_secret') ); ?>" /></td>
+                </tr>
+
+                <tr valign="top">
+                <th scope="row"><?php _e('Twitter OAuth token', 'plugin'); ?></th>
+                <td><input type="text" name="kat_twitter_oauth_token" value="<?php echo esc_attr( get_option('kat_twitter_oauth_token') ); ?>" /></td>
+                </tr>
+
+                <tr valign="top">
+                <th scope="row"><?php _e('Twitter OAuth secret', 'plugin'); ?></th>
+                <td><input type="text" name="kat_twitter_oauth_secret" value="<?php echo esc_attr( get_option('kat_twitter_oauth_secret') ); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row" colspan="2">
+                        <h2>Youtube</h2>
+                    </th>
+                </tr>
+
+                <tr valign="top">
                 <th scope="row"><?php _e('Youtube page', 'plugin'); ?></th>
                 <td><input type="text" name="katYoutubePage" value="<?php echo esc_attr( get_option('katYoutubePage') ); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row" colspan="2">
+                        <h2>Google +</h2>
+                    </th>
                 </tr>
                 
                 <tr valign="top">
                 <th scope="row"><?php _e('Google plus page', 'plugin'); ?></th>
                 <td><input type="text" name="katGplusPage" value="<?php echo esc_attr( get_option('katGplusPage') ); ?>" /></td>
                 </tr>
+                <tr valign="top">
+                    <th scope="row" colspan="2">
+                        <h2>Linkedin</h2>
+                    </th>
+                </tr>
                 
                 <tr valign="top">
                 <th scope="row"><?php _e('Linkedin page', 'plugin'); ?></th>
                 <td><input type="text" name="katLinkedinPage" value="<?php echo esc_attr( get_option('katLinkedinPage') ); ?>" /></td>
                 </tr>
+                <tr valign="top">
+                    <th scope="row" colspan="2">
+                        <h2>Instagram</h2>
+                    </th>
+                </tr>
                 
                 <tr valign="top">
                 <th scope="row"><?php _e('Instagram page', 'plugin'); ?></th>
                 <td><input type="text" name="katInstagramPage" value="<?php echo esc_attr( get_option('katInstagramPage') ); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row" colspan="2">
+                        <h2>Flickr</h2>
+                    </th>
+                </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('FlickR page', 'plugin'); ?></th>
+                <td><input type="text" name="katFlickRPage" value="<?php echo esc_attr( get_option('katFlickRPage') ); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('FlickR API Key', 'plugin'); ?></th>
+                <td><input type="text" name="katFlickRApiKey" value="<?php echo esc_attr( get_option('katFlickRApiKey') ); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('FlickR API Secret', 'plugin'); ?></th>
+                <td><input type="text" name="katFlickRApiSecret" value="<?php echo esc_attr( get_option('katFlickRApiSecret') ); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                    <th scope="row" colspan="2">
+                        <h2>Pinterest</h2>
+                    </th>
+                </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('Pinterest page', 'plugin'); ?></th>
+                <td><input type="text" name="katPinterestPage" value="<?php echo esc_attr( get_option('katPinterestPage') ); ?>" /></td>
                 </tr>
             </table>
             
