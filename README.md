@@ -106,7 +106,3 @@ getKatInstagramPage();<br />
 getKatFlickrPage();<br />
 getKatPinterestPage();<br />
 
-To add:
-
-Youtube channels support<br />
-Instagram channels support
