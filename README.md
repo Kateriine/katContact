@@ -7,12 +7,13 @@ WP plugin for global contact data
 <li>Easily stylable Google maps generated from your adress. Just display it with 
 	<ul>
 		<li>
-			<code><?php echo display_map(); ?></code>
+			<code>echo display_map();</code>
 		</li>
 		<li>
 			or <code>[display-map]</code>
 		</li>
 	</ul>
+	To change the marker, simply add an image called "markerIcon.svg" in your theme images folder.
 </li>
 <li><strong>NEW:</strong> WPML support</li>
 <li><strong>NEW:</strong> Facebook feed with 
