@@ -19,6 +19,12 @@ function display_map() {
     return $map->init();
 }
 
+function display_facebook($numberofStatuses=2, $numberofCols=2) {
+    include_once(MY_PLUGIN_PATH.'includes/facebook.php');
+    $facebook = new Facebook_Feed($numberofStatuses, $numberofCols); 
+    return $facebook->init();
+}
+
 function display_flickr($numberofPics=2, $numberofCols=2, $displayTitle = false, $flickrFeed = '') {
     include_once(MY_PLUGIN_PATH.'includes/flickr.php');
    

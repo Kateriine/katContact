@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: plugin\n"
-"POT-Creation-Date: 2015-08-17 10:55+0200\n"
-"PO-Revision-Date: 2015-08-17 10:59+0200\n"
+"POT-Creation-Date: 2015-08-18 16:29+0200\n"
+"PO-Revision-Date: 2015-08-18 16:30+0200\n"
 "Last-Translator: Bartosz Arendt <info@dfactory.eu>\n"
 "Language-Team: Catherine <catherine@spade.be>\n"
 "Language: fr_FR\n"
@@ -18,87 +18,124 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 "X-Poedit-SearchPath-1: ../.\n"
 
-#: .././includes/admin.php:12 .././includes/admin.php:71
-#: ../includes/admin.php:12 ../includes/admin.php:71
+#: .././includes/admin.php:12 .././includes/admin.php:80
+#: .././includes/admin.php:127 ../includes/admin.php:12
+#: ../includes/admin.php:80 ../includes/admin.php:127
 msgid "Contact data"
 msgstr "Contact gegevens"
 
-#: .././includes/admin.php:15 .././includes/admin.php:188
-#: ../includes/admin.php:15 ../includes/admin.php:188
+#: .././includes/admin.php:15 .././includes/admin.php:305
+#: ../includes/admin.php:15 ../includes/admin.php:305
 msgid "Map data"
 msgstr "Map gegevens"
 
-#: .././includes/admin.php:80 .././includes/admin.php:229
-#: ../includes/admin.php:80 ../includes/admin.php:229
+#: .././includes/admin.php:111 .././includes/admin.php:346
+#: ../includes/admin.php:111 ../includes/admin.php:346
 msgid "Settings saved"
 msgstr "Instellingen opgeslagen"
 
-#: .././includes/admin.php:95 ../includes/admin.php:95
+#: .././includes/admin.php:131 ../includes/admin.php:131
 msgid "Company"
 msgstr "Firma"
 
-#: .././includes/admin.php:100 ../includes/admin.php:100
+#: .././includes/admin.php:136 ../includes/admin.php:136
 msgid "Address"
 msgstr "Adres"
 
-#: .././includes/admin.php:105 ../includes/admin.php:105
+#: .././includes/admin.php:141 ../includes/admin.php:141
 msgid "Zip and town"
 msgstr "Postcode en stad"
 
-#: .././includes/admin.php:110 ../includes/admin.php:110
+#: .././includes/admin.php:146 ../includes/admin.php:146
 msgid "Country"
 msgstr "Land"
 
-#: .././includes/admin.php:115 .././includes/widget.php:219
-#: ../includes/admin.php:115 ../includes/widget.php:219
+#: .././includes/admin.php:151 .././includes/widget.php:224
+#: ../includes/admin.php:151 ../includes/widget.php:224
 msgid "Phone"
 msgstr "Telefoon"
 
-#: .././includes/admin.php:120 ../includes/admin.php:120
+#: .././includes/admin.php:156 ../includes/admin.php:156
 msgid "Fax"
 msgstr "Fax"
 
-#: .././includes/admin.php:125 ../includes/admin.php:125
+#: .././includes/admin.php:161 ../includes/admin.php:161
 msgid "Email"
 msgstr "Email"
 
-#: .././includes/admin.php:130 ../includes/admin.php:130
+#: .././includes/admin.php:171 ../includes/admin.php:171
 msgid "Facebook page"
 msgstr "Facebook pagina"
 
-#: .././includes/admin.php:134 ../includes/admin.php:134
+#: .././includes/admin.php:175 ../includes/admin.php:175
 msgid "Facebook App ID"
 msgstr "Facebook App ID"
 
-#: .././includes/admin.php:139 ../includes/admin.php:139
+#: .././includes/admin.php:180 ../includes/admin.php:180
 msgid "Facebook App secret"
 msgstr "Facebook App secret"
 
-#: .././includes/admin.php:144 ../includes/admin.php:144
+#: .././includes/admin.php:190 ../includes/admin.php:190
 msgid "Twitter page"
 msgstr "Twitter pagina"
 
-#: .././includes/admin.php:149 ../includes/admin.php:149
+#: .././includes/admin.php:195 ../includes/admin.php:195
+msgid "Twitter consumer key"
+msgstr "Twitter consumer key"
+
+#: .././includes/admin.php:200 ../includes/admin.php:200
+msgid "Twitter consumer secret"
+msgstr "Twitter consumer secret"
+
+#: .././includes/admin.php:205 ../includes/admin.php:205
+msgid "Twitter OAuth token"
+msgstr "Twitter OAuth token"
+
+#: .././includes/admin.php:210 ../includes/admin.php:210
+msgid "Twitter OAuth secret"
+msgstr "Twitter OAuth secret"
+
+#: .././includes/admin.php:220 ../includes/admin.php:220
 msgid "Youtube page"
 msgstr "Youtube pagina"
 
-#: .././includes/admin.php:154 ../includes/admin.php:154
+#: .././includes/admin.php:231 ../includes/admin.php:231
 msgid "Google plus page"
 msgstr "Google plus pagina"
 
-#: .././includes/admin.php:159 ../includes/admin.php:159
+#: .././includes/admin.php:235 ../includes/admin.php:235
+msgid "Google/Youtube API"
+msgstr "Google/Youtube API"
+
+#: .././includes/admin.php:245 ../includes/admin.php:245
 msgid "Linkedin page"
 msgstr "Linkedin pagina"
 
-#: .././includes/admin.php:164 ../includes/admin.php:164
+#: .././includes/admin.php:255 ../includes/admin.php:255
 msgid "Instagram page"
 msgstr "Instagram pagina"
 
-#: .././includes/admin.php:168 ../includes/admin.php:168
+#: .././includes/admin.php:259 ../includes/admin.php:259
+msgid "Instagram access token"
+msgstr "Instagram access token"
+
+#: .././includes/admin.php:268 ../includes/admin.php:268
+msgid "FlickR page"
+msgstr "FlickR pagina"
+
+#: .././includes/admin.php:272 ../includes/admin.php:272
+msgid "FlickR API Key"
+msgstr "FlickR API Key"
+
+#: .././includes/admin.php:276 ../includes/admin.php:276
+msgid "FlickR API Secret"
+msgstr "FlickR API Secret"
+
+#: .././includes/admin.php:285 ../includes/admin.php:285
 msgid "Pinterest page"
 msgstr "Pinterest pagina"
 
-#: .././includes/admin.php:189 ../includes/admin.php:189
+#: .././includes/admin.php:306 ../includes/admin.php:306
 msgid ""
 "I don't like plugins injecting small files in the html, not good for "
 "optimization, so you have to add some stuff manually."
@@ -107,67 +144,67 @@ msgstr ""
 "niet goed voor optimalisatie, dus moet u een aantal dingen handmatig "
 "toevoegen."
 
-#: .././includes/admin.php:190 ../includes/admin.php:190
+#: .././includes/admin.php:307 ../includes/admin.php:307
 msgid ""
 "For a custom icon: just add 2 icons called <strong>markerIcon.png</strong> "
 "and <strong>markerIcon.svg</strong> in your theme's \"images\" folder:"
 msgstr ""
-"Voor een custom icoon: voeg 2 iconen genaamd <strong>markerIcon.png</"
-"strong> en <strong>markerIcon.svg</strong> in uw thema \"beelden\" map:"
+"Voor een custom icoon: voeg 2 iconen genaamd <strong>markerIcon.png</strong> "
+"en <strong>markerIcon.svg</strong> in uw thema \"beelden\" map:"
 
-#: .././includes/admin.php:191 ../includes/admin.php:191
+#: .././includes/admin.php:308 ../includes/admin.php:308
 msgid "For the css: just add this in your css and customize:"
 msgstr "Voor de css: dit gewoon toe in uw css en aan te passen:"
 
-#: .././includes/admin.php:235 ../includes/admin.php:235
+#: .././includes/admin.php:352 ../includes/admin.php:352
 msgid "Water"
 msgstr "Water"
 
-#: .././includes/admin.php:241 ../includes/admin.php:241
+#: .././includes/admin.php:358 ../includes/admin.php:358
 msgid "Water labels"
 msgstr "Water labels"
 
-#: .././includes/admin.php:247 ../includes/admin.php:247
+#: .././includes/admin.php:364 ../includes/admin.php:364
 msgid "Landscape"
 msgstr "Landschap"
 
-#: .././includes/admin.php:253 ../includes/admin.php:253
+#: .././includes/admin.php:370 ../includes/admin.php:370
 msgid "Landscape labels"
 msgstr "Landschap labels"
 
-#: .././includes/admin.php:260 ../includes/admin.php:260
+#: .././includes/admin.php:377 ../includes/admin.php:377
 msgid "Roads"
 msgstr "Wegen"
 
-#: .././includes/admin.php:266 ../includes/admin.php:266
+#: .././includes/admin.php:383 ../includes/admin.php:383
 msgid "Roads strokes"
 msgstr "Wegen streken"
 
-#: .././includes/admin.php:272 ../includes/admin.php:272
+#: .././includes/admin.php:389 ../includes/admin.php:389
 msgid "Highways"
 msgstr "Snelwegen"
 
-#: .././includes/admin.php:278 ../includes/admin.php:278
+#: .././includes/admin.php:395 ../includes/admin.php:395
 msgid "Administrative labels"
 msgstr "Administratief labels"
 
-#: .././includes/admin.php:284 ../includes/admin.php:284
+#: .././includes/admin.php:401 ../includes/admin.php:401
 msgid "Heuuu. Green?"
 msgstr "Heuuu. Groen?"
 
-#: .././includes/admin.php:290 ../includes/admin.php:290
+#: .././includes/admin.php:407 ../includes/admin.php:407
 msgid "Greens labels"
 msgstr "Groen labels"
 
-#: .././includes/admin.php:296 ../includes/admin.php:296
+#: .././includes/admin.php:413 ../includes/admin.php:413
 msgid "Greens labels strokes"
 msgstr "Groens labels streken"
 
-#: .././includes/admin.php:302 ../includes/admin.php:302
+#: .././includes/admin.php:419 ../includes/admin.php:419
 msgid "Parks"
 msgstr "Parken"
 
-#: .././includes/map.php:22 ../includes/map.php:22
+#: .././includes/map.php:28 ../includes/map.php:28
 msgid "See on Google Maps"
 msgstr "Zie op Google Maps"
 
@@ -179,38 +216,38 @@ msgstr "Toont sociale gegevens"
 msgid "Show social links"
 msgstr "Toon sociale links"
 
-#: .././includes/widget.php:162 ../includes/widget.php:162
+#: .././includes/widget.php:165 ../includes/widget.php:165
 msgid "Shows contact data"
 msgstr "Toonts contact gegevens"
 
-#: .././includes/widget.php:164 ../includes/widget.php:164
+#: .././includes/widget.php:167 ../includes/widget.php:167
 msgid "Show contact data"
 msgstr "Toonts contact gegevens"
 
-#: .././includes/widget.php:216 ../includes/widget.php:216
+#: .././includes/widget.php:221 ../includes/widget.php:221
 msgid "All rights reserved"
 msgstr "Alle rechten voorbehouden"
 
-#: .././includes/widget.php:295 ../includes/widget.php:295
+#: .././includes/widget.php:299 ../includes/widget.php:299
 msgid "Show number of FB likes block"
 msgstr "Montrer le bloc 'nombre de likes fb'"
 
-#: .././includes/widget.php:297 ../includes/widget.php:297
+#: .././includes/widget.php:301 ../includes/widget.php:301
 msgid "Show number of FB Likes"
 msgstr "Montrer le nombre de likes Facebook"
 
-#: .././includes/widget.php:329 ../includes/widget.php:329
-msgid "Like"
-msgstr "Like"
+#: .././includes/widget.php:341 .././includes/widget.php:462
+#: ../includes/widget.php:341 ../includes/widget.php:462
+msgid "Join us"
+msgstr "Rejoignez-nous"
 
-#: .././includes/widget.php:424 .././includes/widget.php:426
-#: ../includes/widget.php:424 ../includes/widget.php:426
+#: .././includes/widget.php:431 .././includes/widget.php:433
+#: ../includes/widget.php:431 ../includes/widget.php:433
 msgid "Show \"join us on FB\" block"
 msgstr "Montrer le bloc \"Nous rejoindre\" "
 
-#: .././includes/widget.php:452 ../includes/widget.php:452
-msgid "Join us"
-msgstr "Rejoignez-nous"
+#~ msgid "Like"
+#~ msgstr "Like"
 
 #~ msgid "Facebook settings"
 #~ msgstr "Paramètres Facebook"

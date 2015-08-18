@@ -15,6 +15,16 @@ WP plugin for global contact data
 	</ul>
 </li>
 <li><strong>NEW:</strong> WPML support</li>
+<li><strong>NEW:</strong> Facebook feed with 
+	<code>echo display_flickr($numberofStatuses=2, $numberofCols=2);</code><br />
+    
+By default, displays facebook status feed of the user's page.<br />
+Parameters:<br />
+	<ul>
+		<li>Number of pictures (integer) - Default: 2</li>
+		<li>Number of columns (integer) - Default: 2</li>
+	</ul>
+</li>
 <li><strong>NEW:</strong> Flickr pictures with 
 	<code>echo display_flickr($numberofPics=2, $numberofCols=2, $displayTitle=false, $flickrFeed='');</code><br />
     
