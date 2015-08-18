@@ -47,11 +47,13 @@ class Facebook_Feed{
         // echo '<pre>';
         // print_r($data);
         // echo '</pre>';
+                $idArr = explode('_', $data->id);
+                $id = $idArr[1];
                 $output .= '<div class="uk-width-1-'.$this->numCols.'">';
                 if($pic != '') {
                     $output .= '<div class="uk-text-center">';
-                    $output .= '<a href="https://www.facebook.com/'.$pageID.'/posts/'.$data->id.'">';
-                    $output .= '<img src="'.$pic .'" alt="'.$data->name .'" />';
+                    $output .= '<a href="https://www.facebook.com/'.$pageID.'/posts/'.$id.'">';
+                    $output .= '<img src="'.$pic .'" alt="'.htmlentities($data->name) .'" />';
                     $output .= '</a>';
                     $output .= '</div>';
 
