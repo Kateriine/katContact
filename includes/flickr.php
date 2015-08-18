@@ -24,11 +24,9 @@ class Flickr_Feed{
 
         require_once( plugin_dir_path(__FILE__).'phpflickr/phpFlickr.php' );
 
-        global $post;
-        global $WP_Views;
         $output='';
-        $apiKey = apply_filters( 'wpml_translate_single_string', get_option("katFlickRApiKey"), 'KatContact Data', 'katFlickRApiKey' );
-        $apiSecret = apply_filters( 'wpml_translate_single_string', get_option("katFlickRApiSecret"), 'KatContact Data', 'katFlickRApiSecret' );
+        $apiKey = get_option("katFlickRApiKey");
+        $apiSecret = get_option("katFlickRApiSecret");
         if($this->fFeed != '') {
             $set = $this->fFeed;  
             if(substr($set, -1) != '/'){
@@ -37,16 +35,20 @@ class Flickr_Feed{
             $feed = substr($set, -18, -1);
 
             $f = new phpFlickr($apiKey, $apiSecret);
-            $userInfo = $f->urls_lookupUser($feed);
+
+            //$userInfo = $f->urls_lookupUser($feed);
             $photoset = $f->photosets_getPhotos($feed, 3, 'machine_tags,o_dims', $this->numPics, 1);
             if($this->dTitle) $output .= $photoset['photoset']['title'];
             if(isset($photoset['photoset']['photo'])) {
               $output .='<div class="uk-grid uk-grid-collapse">';
-              foreach($photoset['photoset']['photo'] as $photo) {
+              foreach($photoset['photoset']['photo'] as $photo) {+
+
                 $photo_url = $f->buildPhotoURL($photo, 'large');
+                $photo_thumb = $f->buildPhotoURL($photo, 'medium');
+
                 //$photo_url2 = $f->buildPhotoURL($photo, 'large_square');
                 $output .= '<div class="uk-width-1-'.$this->numCols.'">';
-                $output .= '<a class="fancybox" href="'.$photo_url.'" data-fancybox-group="gallery" title="'.$photo['title'].'"><span class="flickrImg" style="background-image:url('.$photo_url.');"></span></a>';
+                $output .= '<a class="fancybox" href="'.$photo_url.'" data-fancybox-group="gallery" title="'.$photo['title'].'"><img src="'.$photo_thumb.'" alt="'.$photo['title'].'" width="500" height="500"/></a>';
                 $output .= '</div>';
 
               }
@@ -64,9 +66,10 @@ class Flickr_Feed{
                 $output='<div class="uk-grid uk-grid-collapse">';
                   foreach($photoset['photos']['photo'] as $photo) {
                     $photo_url = $f->buildPhotoURL($photo, 'large');
+                    $photo_thumb = $f->buildPhotoURL($photo, 'medium');
                     //$photo_url2 = $f->buildPhotoURL($photo, 'large_square');
                     $output .= '<div class="uk-width-1-'.$this->numCols.'">';
-                    $output .= '<a class="fancybox" href="'.$photo_url.'" data-fancybox-group="gallery" title="'.$photo['title'].'"><span class="flickrImg" style="background-image:url('.$photo_url.');"></span></a>';
+                    $output .= '<a class="fancybox" href="'.$photo_url.'" data-fancybox-group="gallery" title="'.$photo['title'].'"><img src="'.$photo_thumb.'" alt="'.$photo['title'].'" width="500" height="500"/></a>';
                     $output .= '</div>';
 
                   }

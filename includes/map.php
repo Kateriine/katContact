@@ -15,8 +15,8 @@ class Kat_Map{
         wp_enqueue_script('infobox');
                 
     }
-    static function init(  ) { 
-        return self::map();
+    public function init(  ) { 
+        return $this->map();
     }
         
     private function map(){ 

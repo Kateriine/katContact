@@ -16,24 +16,32 @@ add_shortcode('display-map', 'display_map');
 
 function display_map() {
     include_once(MY_PLUGIN_PATH.'includes/map.php');
-    return $map::init();
+    return $map->init();
 }
 
-function display_flickr($numberofPics=2, $numberofCols=2, $flickrFeed = '', $displayTitle = false) {
+function display_flickr($numberofPics=2, $numberofCols=2, $displayTitle = false, $flickrFeed = '') {
     include_once(MY_PLUGIN_PATH.'includes/flickr.php');
-    if($flickrFeed == '')
-       $set = apply_filters( 'wpml_translate_single_string', get_option("katFlickrPage"), 'KatContact Data', 'katFlickrPage' );
-   else
-        $set = substr($flickrFeed, -18, -1);
    
-    $flickr = new Flickr_Feed($set, $numberofPics, $numberofCols, $displayTitle);
+    $flickr = new Flickr_Feed($numberofPics, $numberofCols, $displayTitle, $flickrFeed);
     return $flickr->init();
 }
 
-function display_twitter($hashtag='#GoT', $numOfTweets=3) {
+function display_twitter($numOfTweets=3, $hashtag='') {
     include_once(MY_PLUGIN_PATH.'includes/twitter_feed.php');
-    $twitter = new KatTwitterSearch($hashtag, $numOfTweets); 
+    $twitter = new KatTwitterSearch($numOfTweets, $hashtag); 
     return $twitter->getTSearch();
+}
+
+function display_youtube($numberofVids=2, $numberofCols=2, $displayTitle=false, $youtubeFeed='') {
+    include_once(MY_PLUGIN_PATH.'includes/youtube.php');
+    $youtube = new Youtube($numberofVids, $numberofCols, $displayTitle, $youtubeFeed); 
+    return $youtube->init();
+}
+
+function display_instagram($numberofPics=2, $numberofCols=2) {
+    include_once(MY_PLUGIN_PATH.'includes/instagram.php');
+    $instagram = new Instagram_Feed($numberofPics, $numberofCols); 
+    return $instagram->init();
 }
 
 function getKatCompany(){

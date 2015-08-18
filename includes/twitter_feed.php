@@ -8,7 +8,7 @@ class KatTwitterSearch{
     private $hashtag;
     private $numOfTweets;
 
-    public function __construct($hashtag='#GoT', $numOfTweets=3)  {
+    public function __construct($numOfTweets=3, $hashtag='')  {
         global $post;
         $this->hashtag = $hashtag;
         $this->numOfTweets = $numOfTweets;
@@ -28,15 +28,31 @@ class KatTwitterSearch{
 
         $connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
         //echo'https://api.twitter.com/1.1/search/tweets.json?q='.urlencode($this->hashtag).'&count='.$this->numOfTweets.'&src=typd';
-        $search = $connection->get('https://api.twitter.com/1.1/search/tweets.json?q='.urlencode($this->hashtag).'&count='.$this->numOfTweets.'&src=typd');
 
-        $this->htmlizer($search);
+        if($this->hashtag == '') {
+            $tweetPage = apply_filters( 'wpml_translate_single_string', get_option("katTwitterPage"), 'KatContact Data', 'katTwitterPage' );
+            if(substr($tweetPage, -1) == '/'){
+                $tweetPage = substr($tweetPage, count($tweetPage)-1, -1);
+            }
+            $tweetPageArr = explode("/", $tweetPage);
+            $user = $tweetPageArr[3];
+            $json = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name='.$user.'&count='.$this->numOfTweets.'&src=typd';
+
+            $tweets = $connection->get($json);
+            $statuses = $tweets;
+
+        }
+        else {
+            $tweets = $connection->get('https://api.twitter.com/1.1/search/tweets.json?q='.urlencode($this->hashtag).'&count='.$this->numOfTweets.'&src=typd');
+            $statuses = $tweets->statuses;
+        }
+
+        $this->htmlizer($statuses);
     }
 
-    private function htmlizer($search){
-        $statuses = $search->statuses;
+    private function htmlizer($statuses){
             // echo '<pre>';
-            // print_r($statuses);
+            // print_r($search);
             // echo '</pre>';
         
         $html='<div class="slick-slider">';

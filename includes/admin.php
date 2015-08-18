@@ -42,6 +42,7 @@ class My_Plugin_Admin {
         register_setting( 'my-plugin-settings-group', 'kat_facebook_app_id' );
         register_setting( 'my-plugin-settings-group', 'kat_facebook_app_secret' );
         register_setting( 'my-plugin-settings-group', 'katYoutubePage' );
+        register_setting( 'my-plugin-settings-group', 'katGoogleApi' );
         register_setting( 'my-plugin-settings-group', 'katTwitterPage' );
         register_setting( 'my-plugin-settings-group', 'kat_twitter_consumer_key' );
         register_setting( 'my-plugin-settings-group', 'kat_twitter_consumer_secret' );
@@ -50,6 +51,7 @@ class My_Plugin_Admin {
         register_setting( 'my-plugin-settings-group', 'katGplusPage' );
         register_setting( 'my-plugin-settings-group', 'katLinkedinPage' );
         register_setting( 'my-plugin-settings-group', 'katInstagramPage' );
+        register_setting( 'my-plugin-settings-group', 'katInstagramToken' );
         register_setting( 'my-plugin-settings-group', 'katFlickRPage' );
         register_setting( 'my-plugin-settings-group', 'katFlickRApiKey' );
         register_setting( 'my-plugin-settings-group', 'katFlickRApiSecret' );
@@ -83,7 +85,21 @@ class My_Plugin_Admin {
                     if($keyname != 'submit' ) {
                         update_option($keyname, $value);
                         //print_r($_POST);
-                        if($keyname != '_wp_http_referer' && $keyname != '_wpnonce' && $keyname != 'option_page' && $keyname != 'action')
+                        if($keyname != '_wp_http_referer' 
+                            && $keyname != '_wpnonce' 
+                            && $keyname != 'option_page' 
+                            && $keyname != 'action'
+                            && $keyname != 'katFlickRApiSecret'
+                            && $keyname != 'katFlickRApiKey'
+                            && $keyname != 'kat_facebook_app_id'
+                            && $keyname != 'kat_facebook_app_secret'
+                            && $keyname != 'kat_twitter_consumer_key'
+                            && $keyname != 'kat_twitter_consumer_secret'
+                            && $keyname != 'kat_twitter_oauth_token'
+                            && $keyname != 'kat_twitter_oauth_secret'
+                            && $keyname != 'katGoogleApi'
+                            && $keyname != 'katInstagramToken'
+                            )
                             do_action( 'wpml_register_single_string', 'KatContact Data', $keyname, $value );
                         //WMPL
 
@@ -204,6 +220,7 @@ class My_Plugin_Admin {
                 <th scope="row"><?php _e('Youtube page', 'plugin'); ?></th>
                 <td><input type="text" name="katYoutubePage" value="<?php echo esc_attr( get_option('katYoutubePage') ); ?>" /></td>
                 </tr>
+
                 <tr valign="top">
                     <th scope="row" colspan="2">
                         <h2>Google +</h2>
@@ -213,6 +230,10 @@ class My_Plugin_Admin {
                 <tr valign="top">
                 <th scope="row"><?php _e('Google plus page', 'plugin'); ?></th>
                 <td><input type="text" name="katGplusPage" value="<?php echo esc_attr( get_option('katGplusPage') ); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('Google/Youtube API', 'plugin'); ?></th>
+                <td><input type="text" name="katGoogleApi" value="<?php echo esc_attr( get_option('katGoogleApi') ); ?>" /></td>
                 </tr>
                 <tr valign="top">
                     <th scope="row" colspan="2">
@@ -233,6 +254,10 @@ class My_Plugin_Admin {
                 <tr valign="top">
                 <th scope="row"><?php _e('Instagram page', 'plugin'); ?></th>
                 <td><input type="text" name="katInstagramPage" value="<?php echo esc_attr( get_option('katInstagramPage') ); ?>" /></td>
+                </tr>
+                <tr valign="top">
+                <th scope="row"><?php _e('Instagram access token', 'plugin'); ?></th>
+                <td><input type="text" name="katInstagramToken" value="<?php echo esc_attr( get_option('katInstagramToken') ); ?>" /></td>
                 </tr>
                 <tr valign="top">
                     <th scope="row" colspan="2">
