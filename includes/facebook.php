@@ -44,9 +44,9 @@ class Facebook_Feed{
                 $pic = $picArr[1];
                 $pic = str_replace(array('%3A', '%2F', '%3F', '%3D', '%2A', '&cfs=1', '&sx=0&sy=0&sw=533&sh=533'), array(':', '/', '?', '=', '*', '', ''), $pic);
 
-        echo '<pre>';
-        print_r($data);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($data);
+        // echo '</pre>';
                 $output .= '<div class="uk-width-1-'.$this->numCols.'">';
                 if($pic != '') {
                     $output .= '<div class="uk-text-center">';

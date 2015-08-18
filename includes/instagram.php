@@ -49,12 +49,12 @@ class Instagram_Feed{
             foreach ( $items as $item ){
                 if (isset($item->videos)){    
                     $output .= '<div class="uk-width-1-'.$this->numCols.'">';   
-                        $output .= '<a class="fancybox fancybox.iframe" href="'.$item->videos->standard_resolution->url.'" data-fancybox-group="gallery" title="'.$item->caption->text.'"><img src="'.$item->images->standard_resolution->url.'" alt="'.$item->caption->text.'" width="640" height="640" /></a>'; 
+                        $output .= '<a class="fancybox fancybox.iframe" href="'.$item->videos->standard_resolution->url.'" data-fancybox-group="gallery" title="'.htmlentities($item->caption->text).'"><img src="'.$item->images->standard_resolution->url.'" alt="'.htmlentities($item->caption->text).'" width="640" height="640" /></a>'; 
                     $output .= '</div>';       
                 }
                 else {
                     $output .= '<div class="uk-width-1-'.$this->numCols.'">';   
-                    $output .= '<a class="fancybox" href="'.$item->images->standard_resolution->url.'" data-fancybox-group="gallery" title="'.$item->caption->text.'"><img src="'.$item->images->standard_resolution->url.'" alt="'.$item->caption->text.'" width="640" height="640" /></a>'; 
+                    $output .= '<a class="fancybox" href="'.$item->images->standard_resolution->url.'" data-fancybox-group="gallery" title="'.htmlentities($item->caption->text).'"><img src="'.$item->images->standard_resolution->url.'" alt="'.htmlentities($item->caption->text).'" width="640" height="640" /></a>'; 
                     $output .= '</div>';
                 } 
 

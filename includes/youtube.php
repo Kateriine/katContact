@@ -65,7 +65,7 @@ class Youtube{
             $photo_title= $item->snippet->title;
             $output .= '<div class="uk-width-small-1-' . $this->numCols . '">';
 
-            $output .= '<a class="fancybox fancybox.iframe" title="'.$photo_title.'" href="http://www.youtube.com/embed/' . $photo_id . '?autoplay=1&amp;enablejsapi=1&amp;html5=1&amp;vq=hd720" data-fancybox-group="gallery"><img src="'.$photo_url .'" alt="'.str_replace('"', "'", $photo_title).'" width="'.$photo_w.'" height="'.$photo_h.'"/></a>';
+            $output .= '<a class="fancybox fancybox.iframe" title="'.$photo_title.'" href="http://www.youtube.com/embed/' . $photo_id . '?autoplay=1&amp;enablejsapi=1&amp;html5=1&amp;vq=hd720" data-fancybox-group="gallery"><img src="'.$photo_url .'" alt="'.htmlentities($photo_title).'" width="'.$photo_w.'" height="'.$photo_h.'"/></a>';
             $output .= '</div>';
         }
 

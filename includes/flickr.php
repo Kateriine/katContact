@@ -48,7 +48,7 @@ class Flickr_Feed{
 
                 //$photo_url2 = $f->buildPhotoURL($photo, 'large_square');
                 $output .= '<div class="uk-width-1-'.$this->numCols.'">';
-                $output .= '<a class="fancybox" href="'.$photo_url.'" data-fancybox-group="gallery" title="'.$photo['title'].'"><img src="'.$photo_thumb.'" alt="'.$photo['title'].'" width="500" height="500"/></a>';
+                $output .= '<a class="fancybox" href="'.$photo_url.'" data-fancybox-group="gallery" title="'.htmlentities($photo['title']).'"><img src="'.$photo_thumb.'" alt="'.htmlentities($photo['title']).'" width="500" height="500"/></a>';
                 $output .= '</div>';
 
               }
@@ -69,7 +69,7 @@ class Flickr_Feed{
                     $photo_thumb = $f->buildPhotoURL($photo, 'medium');
                     //$photo_url2 = $f->buildPhotoURL($photo, 'large_square');
                     $output .= '<div class="uk-width-1-'.$this->numCols.'">';
-                    $output .= '<a class="fancybox" href="'.$photo_url.'" data-fancybox-group="gallery" title="'.$photo['title'].'"><img src="'.$photo_thumb.'" alt="'.$photo['title'].'" width="500" height="500"/></a>';
+                    $output .= '<a class="fancybox" href="'.$photo_url.'" data-fancybox-group="gallery" title="'.htmlentities($photo['title']).'"><img src="'.$photo_thumb.'" alt="'.htmlentities($photo['title']).'" width="500" height="500"/></a>';
                     $output .= '</div>';
 
                   }

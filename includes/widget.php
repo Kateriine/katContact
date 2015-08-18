@@ -75,7 +75,7 @@ class SocialData extends WP_Widget {
     echo '<div class="uk-share">';
     echo '<ul>';
     if($this->fbPage !== '')
-      echo '<li><a href="'.$this->fbPage.'"><i class="uk-icon uk-icon-facebook"></i></a></a></li>';
+      echo '<li><a href="'.$this->fbPage.'"><i class="uk-icon uk-icon-facebook"></i></a></li>';
     if($this->twitterPage !== '')
       echo '<li><a href="'.$this->twitterPage.'"><i class="uk-icon uk-icon-twitter"></i></a></li>';
     if($this->youtubePage !== '')
@@ -301,6 +301,7 @@ class FacebookLike extends WP_Widget {
     $this->WP_Widget('facebookLike', __('Show number of FB Likes', 'site'), $widget_ops);
     $this->alt_option_name = 'facebookLike';
     $this->fbUrl = apply_filters( 'wpml_translate_single_string', get_option("katFbPage"), 'KatContact Data', 'katFbPage' );
+    $this->twitterUrl = apply_filters( 'wpml_translate_single_string', get_option("katTwitterPage"), 'KatContact Data', 'katTwitterPage' );
     $this->fbAppId = apply_filters( 'wpml_translate_single_string', get_option("kat_facebook_app_id"), 'KatContact Data', 'kat_facebook_app_id' );
     $this->fbAppSecret = apply_filters( 'wpml_translate_single_string', get_option("kat_facebook_app_secret"), 'KatContact Data', 'kat_facebook_app_secret' );
 
@@ -353,11 +354,16 @@ class FacebookLike extends WP_Widget {
     echo $this->getfbFollowers();
     
     echo '<div class="fb-button-place">
-            <div class="fb-like" data-href="'. $this->fbUrl .'" data-layout="button" data-action="like" data-show-faces="false" data-share="false">
+            <div class="fb-like" data-href="'. $this->fbUrl .'" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false">
             </div>            
+          </div>'; 
+
+    echo '<div class="twitter-button-place">
+            <a href="'. $this->twitterUrl .'" class="twitter-follow-button" data-show-count="true" data-show-screen-name="false">Follow</a></div>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script>         
           </div>';  
        
-    echo '</div></div><!--/facebook-content-->';
+    echo '</div><!--/facebook-content-->';
     
     echo $after_widget;  
 
