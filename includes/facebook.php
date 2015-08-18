@@ -37,16 +37,16 @@ class Facebook_Feed{
         $page_data = $this->fetchUrl("https://graph.facebook.com/".$pageID ."/posts?limit=".$this->numStat.'&'.$this->authToken, true);
         //echo "https://graph.facebook.com/".$pageID ."/posts?limit=".$this->numStat.'&'.$this->authToken;
         if(isset($page_data->data)) {
-            $output .='<div class="uk-grid">';
+            $output .='<div class="uk-grid" data-uk-grid-margin data-uk-grid-match>';
             foreach($page_data->data as $data) {
                 $pic='';
                 $picArr = explode('&url=', $data->picture);
                 $pic = $picArr[1];
-                $pic = str_replace(array('%3A', '%2F', '%3F', '%3D'), array(':', '/', '?', '='), $pic);
+                $pic = str_replace(array('%3A', '%2F', '%3F', '%3D', '%2A', '&cfs=1', '&sx=0&sy=0&sw=533&sh=533'), array(':', '/', '?', '=', '*', '', ''), $pic);
 
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
                 $output .= '<div class="uk-width-1-'.$this->numCols.'">';
                 if($pic != '') {
                     $output .= '<div class="uk-text-center">';
