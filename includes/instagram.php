@@ -12,7 +12,6 @@ class Instagram_Feed{
     public function __construct($numberofPics=2, $numberofCols=2)  {  
         $this->numPics = $numberofPics;  
         $this->numCols = $numberofCols; 
-        $this->dTitle = $displayTitle;
     }
     public function init() {   
         return $this->instagram_f();
