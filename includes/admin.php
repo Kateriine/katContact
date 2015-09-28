@@ -398,23 +398,23 @@ class My_Plugin_Admin {
                     </td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><?php _e('Heuuu. Green?', 'plugin'); ?></th>
+                    <th scope="row"><?php _e('Points of interest', 'plugin'); ?></th>
                     <td>
                         <input type="text" class="color-field" name="katPoiColor" value="<?php echo esc_attr( get_option('katPoiColor') ); ?>">
                     </td>
                 </tr>
                 <tr valign="top">
-                    <th scope="row"><?php _e('Greens labels', 'plugin'); ?></th>
+                    <th scope="row"><?php _e('Points of interest labels', 'plugin'); ?></th>
                     <td>
                         <input type="text" class="color-field" name="katPoiLabelColor" value="<?php echo esc_attr( get_option('katPoiLabelColor') ); ?>">
                     </td>
                 </tr>
-                <tr valign="top">
-                    <th scope="row"><?php _e('Greens labels strokes', 'plugin'); ?></th>
-                    <td>
-                        <input type="text" class="color-field" name="katPoiLabelStrokeColor" value="<?php echo esc_attr( get_option('katPoiLabelStrokeColor') ); ?>">
-                    </td>
-                </tr>
+                <!-- tr valign="top">
+                    <th scope="row"><?php _e('Points of interest strokes', 'plugin'); ?></th>
+                    <td -->
+                        <input type="hidden" name="katPoiLabelStrokeColor" value="transparent">
+                    <!-- /td>
+                </tr -->
                 <tr valign="top">
                     <th scope="row"><?php _e('Parks', 'plugin'); ?></th>
                     <td>
