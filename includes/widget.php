@@ -13,7 +13,7 @@ class SocialData extends WP_Widget {
   function __construct() {
     $widget_ops = array('classname' => 'contact-data widget_image_text_widget', 'description' => __('Shows social data', 'site'));
 
-    $this->WP_Widget('SocialData', __('Show social links', 'site'), $widget_ops);
+    parent::__construct('SocialData', __('Show social links', 'site'), $widget_ops);
     $this->alt_option_name = 'SocialData';
     
     $this->company = apply_filters( 'wpml_translate_single_string', get_option("katCompany"), 'KatContact Data', 'katCompany' );
@@ -164,7 +164,7 @@ class ContactData extends WP_Widget {
   function __construct() {
     $widget_ops = array('classname' => 'contact-data widget_image_text_widget', 'description' => __('Shows contact data', 'site'));
 
-    $this->WP_Widget('ContactData', __('Show contact data', 'site'), $widget_ops);
+    parent::__construct('ContactData', __('Show contact data', 'site'), $widget_ops);
     $this->alt_option_name = 'ContactData';
     
     $this->company = apply_filters( 'wpml_translate_single_string', get_option("katCompany"), 'KatContact Data', 'katCompany' );
@@ -298,7 +298,7 @@ class FacebookLike extends WP_Widget {
   function __construct() {
     $widget_ops = array('classname' => 'facebook-like widget_image_text_widget', 'description' => __('Show number of FB likes block', 'site'));
 
-    $this->WP_Widget('facebookLike', __('Show number of FB Likes', 'site'), $widget_ops);
+    parent::__construct('facebookLike', __('Show number of FB Likes', 'site'), $widget_ops);
     $this->alt_option_name = 'facebookLike';
     $this->fbUrl = apply_filters( 'wpml_translate_single_string', get_option("katFbPage"), 'KatContact Data', 'katFbPage' );
     $this->twitterUrl = apply_filters( 'wpml_translate_single_string', get_option("katTwitterPage"), 'KatContact Data', 'katTwitterPage' );
@@ -436,7 +436,7 @@ class facebookJoin extends WP_Widget {
   function __construct() {
     $widget_ops = array('classname' => 'facebook-join', 'description' => __('Show "join us on FB" block', 'site'));
 
-    $this->WP_Widget('facebookJoin', __('Show "join us on FB" block', 'site'), $widget_ops);
+    parent::__construct('facebookJoin', __('Show "join us on FB" block', 'site'), $widget_ops);
     $this->alt_option_name = 'facebookJoin';
      $this->fbPage = apply_filters( 'wpml_translate_single_string', get_option("katFbPage"), 'KatContact Data', 'katFbPage' );
     $this->fbAppId = apply_filters( 'wpml_translate_single_string', get_option("kat_facebook_app_id"), 'KatContact Data', 'kat_facebook_app_id' );
