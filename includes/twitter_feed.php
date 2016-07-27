@@ -20,48 +20,56 @@ class KatTwitterSearch{
     }
 
     private function getTwitterJson(){
-        $consumer_key = get_option('kat_twitter_consumer_key');
-        $consumer_secret = get_option('kat_twitter_consumer_secret');
-     
-        $oauth_token = get_option('kat_twitter_oauth_token');
-        $oauth_token_secret = get_option('kat_twitter_oauth_secret');
-
-        $connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
-        //echo'https://api.twitter.com/1.1/search/tweets.json?q='.urlencode($this->hashtag).'&count='.$this->numOfTweets.'&src=typd';
-
-        if($this->hashtag == '') {
-            $tweetPage = apply_filters( 'wpml_translate_single_string', get_option("katTwitterPage"), 'KatContact Data', 'katTwitterPage' );
-            if(substr($tweetPage, -1) == '/'){
-                $tweetPage = substr($tweetPage, count($tweetPage)-1, -1);
-            }
-            $tweetPageArr = explode("/", $tweetPage);
-            $user = $tweetPageArr[3];
-            $json = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name='.$user.'&count='.$this->numOfTweets.'&src=typd';
-
-            $tweets = $connection->get($json);
-            $statuses = $tweets;
-
+        if(get_transient('twitter_feed')) {
+            $statuses = get_transient('twitter_feed');
         }
         else {
-            $tweets = $connection->get('https://api.twitter.com/1.1/search/tweets.json?q='.urlencode($this->hashtag).'&count='.$this->numOfTweets.'&src=typd');
-            $statuses = $tweets->statuses;
+
+            $consumer_key = get_option('kat_twitter_consumer_key');
+            $consumer_secret = get_option('kat_twitter_consumer_secret');
+         
+            $oauth_token = get_option('kat_twitter_oauth_token');
+            $oauth_token_secret = get_option('kat_twitter_oauth_secret');
+
+            $connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
+            //echo'https://api.twitter.com/1.1/search/tweets.json?q='.urlencode($this->hashtag).'&count='.$this->numOfTweets.'&src=typd';
+
+            if($this->hashtag == '') {
+                $tweetPage = apply_filters( 'wpml_translate_single_string', get_option("katTwitterPage"), 'KatContact Data', 'katTwitterPage' );
+                if(substr($tweetPage, -1) == '/'){
+                    $tweetPage = substr($tweetPage, count($tweetPage)-1, -1);
+                }
+                $tweetPageArr = explode("/", $tweetPage);
+                $user = $tweetPageArr[3];
+                $json = 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name='.$user.'&count='.$this->numOfTweets.'&src=typd';
+
+                $tweets = $connection->get($json);
+
+                $statuses = $tweets;
+
+            }
+            else {
+                $tweets = $connection->get('https://api.twitter.com/1.1/search/tweets.json?q='.urlencode($this->hashtag).'&count='.$this->numOfTweets.'&src=typd');
+                $statuses = $tweets->statuses;
+            }
+            set_transient('twitter_feed', $statuses, 7200);
         }
 
         $this->htmlizer($statuses);
     }
 
+
     private function htmlizer($statuses){
-            // echo '<pre>';
-            // print_r($search);
-            // echo '</pre>';
         
-        $html='<div class="slick-slider">';
-        for ($i=0; $i < count($statuses); $i++) { 
+        $html='<ul class="twitter__feed">';
+        foreach ($statuses as $status) {
 
-            $tweet = $statuses[$i];
+            $tweet = $status;
+            $pic = $tweet->user->profile_image_url;
+            $pic = str_replace('normal', 'bigger', $pic);
 
-            $html .= '<div>';
-            $html .= '<a href="https://twitter.com/'.$tweet->user->screen_name.'" target="_blank"><img src="'.$tweet->user->profile_image_url.'" alt="" width="48" height="48" /></a>';
+            $html .= '<li>';
+            $html .= '<a class="twitter__img" href="https://twitter.com/'.$tweet->user->screen_name.'" target="_blank"><img src="'.$pic.'" alt="" width="73" height="73" /></a>';
             $html .= '<div class="t-cont">';
             $html .= '<span class="tweet-name">'. $tweet->user->name . '</span> ' ;
             $html .= '<a href="https://twitter.com/'.$tweet->user->screen_name.'" target="_blank" class="tweet-username">@'.$tweet->user->screen_name. '</a><br />';
@@ -85,13 +93,13 @@ class KatTwitterSearch{
             }
             $html .= '<div class="tweet-date"><a href="https://twitter.com/' . $tweet->user->screen_name . '/status/'. $tweet->id_str . '"  target="_blank" >' . $dTweet .'</a></div>';
             $html .= '</div>';
-            $html .= '</div>';
+            $html .= '</li>';
 
         // echo '<pre>';
         // print_r($statuses[$i]);
         // echo '</pre>';
         }
-            $html .= '</div>';
+            $html .= '</ul>';
         
         $this->html = $html;
     }
