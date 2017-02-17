@@ -83,15 +83,15 @@ class KatTwitterSearch{
             // $html .= 'Tweeté à ' . strtotime($tweet->created_at).'<br>';
             // $html .= 'temps actuel ' . time().'<br>';
 
-            $interval = time()-strtotime($tweet->created_at);
-            if($interval > 86400){ //if more than 24h happened, we display the date
-                $dTweet = date_i18n(get_option( 'date_format' ), strtotime($tweet->created_at));
-            }
-            else{ //otherwise we display the hour
-                date_default_timezone_set(get_option('timezone_string'));
-                $dTweet = date_i18n('G:i', strtotime($tweet->created_at), false);
-            }
-            $html .= '<div class="tweet-date"><a href="https://twitter.com/' . $tweet->user->screen_name . '/status/'. $tweet->id_str . '"  target="_blank" >' . $dTweet .'</a></div>';
+            // $interval = time()-strtotime($tweet->created_at);
+            // if($interval > 86400){ //if more than 24h happened, we display the date
+            //     $dTweet = date_i18n(get_option( 'date_format' ), strtotime($tweet->created_at));
+            // }
+            // else{ //otherwise we display the hour
+            //     date_default_timezone_set(get_option('timezone_string'));
+            //     $dTweet = date_i18n('G:i', strtotime($tweet->created_at), false);
+            // }
+            // $html .= '<div class="tweet-date"><a href="https://twitter.com/' . $tweet->user->screen_name . '/status/'. $tweet->id_str . '"  target="_blank" >' . $dTweet .'</a></div>';
             $html .= '</div>';
             $html .= '</li>';
 
