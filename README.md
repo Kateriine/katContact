@@ -1,4 +1,4 @@
-# KatContact 3.0
+# KatContact 3.1
 WP plugin for global contact data
 <ul>
 <li>Admin page to add contact data like address, phone, Facebook page, etc.</li>
@@ -15,8 +15,8 @@ WP plugin for global contact data
 	</ul>
 	To change the marker, simply add an image called "markerIcon.svg" in your theme images folder.
 </li>
-<li><strong>NEW:</strong> WPML support</li>
-<li><strong>NEW:</strong> Facebook feed with 
+<li>WPML support</li>
+<li>Facebook feed with 
 	<code>echo display_flickr($numberofStatuses=2, $numberofCols=2);</code><br />
     
 By default, displays facebook status feed of the user's page.<br />
@@ -26,7 +26,7 @@ Parameters:<br />
 		<li>Number of columns (integer) - Default: 2</li>
 	</ul>
 </li>
-<li><strong>NEW:</strong> Flickr pictures with 
+<li>Flickr pictures with 
 	<code>echo display_flickr($numberofPics=2, $numberofCols=2, $displayTitle=false, $flickrFeed='');</code><br />
     
 By default, displays flickr pics feed of the user's page.<br />
@@ -38,7 +38,7 @@ Parameters:<br />
 		<li>Optional: Album URL - Default: ''</li>
 	</ul>
 </li>
-<li><strong>NEW:</strong> Twitter feed with 
+<li>Twitter feed with 
 <code>
 	echo display_twitter($numberofTweets, $hashtag);
 </code><br />
@@ -50,7 +50,7 @@ Parameters:<br />
 	</ul>
 Please customize the html in includes/twitter.php
 </li>
-<li><strong>NEW:</strong> Youtube feed with 
+<li>Youtube feed with 
 <code>
 	echo display_youtube($numberofVids=2, $numberofCols=2, $displayTitle=false, $youtubeFeed='');
 </code><br />
@@ -64,7 +64,7 @@ Parameters:<br />
 	</ul>
 </li>
 <li>
-	<strong>NEW:</strong> Instagram feed with
+	Instagram feed with
 	<code>
 	echo display_instagram($numberofPics=2, $numberofCols=2);
 </code><br />
@@ -76,8 +76,15 @@ Parameters:<br />
 	</ul>
 	
 </li>
+<li>
+	<strong>New</strong> Social share + count with 
+	<code>
+	echo display_social_share();
+</code>	
+</li>
 </ul>
 ##So, what it does, in brief:
+
 - Google map
 - FB Like box widget (with number of likes)
 - FB Join Box widget
@@ -89,20 +96,20 @@ Parameters:<br />
 - Instagram user feed
 	
 ## You can get data anywhere with:
-getKatCompany();<br />
-getKatAddress();<br />
-getKatZipTown();<br />
-getKatPhone();<br />
-getKatCountry();<br />
-getKatPhone();<br />
-getKatFax();<br />
-getKatEmail();<br />
-getKatFbPage();<br />
-getKatTwitterPage();<br />
-getKatYoutubePage();<br />
-getKatGplusPage();<br />
-getKatLinkedinPage();<br />
-getKatInstagramPage();<br />
-getKatFlickrPage();<br />
-getKatPinterestPage();<br />
+* getKatCompany();<br />
+* getKatAddress();<br />
+* getKatZipTown();<br />
+* getKatPhone();<br />
+* getKatCountry();<br />
+* getKatPhone();<br />
+* getKatFax();<br />
+* getKatEmail();<br />
+* getKatFbPage();<br />
+* getKatTwitterPage();<br />
+* getKatYoutubePage();<br />
+* getKatGplusPage();<br />
+* getKatLinkedinPage();<br />
+* getKatInstagramPage();<br />
+* getKatFlickrPage();<br />
+* getKatPinterestPage();<br />
 
