@@ -1,28 +1,49 @@
 <?php
 if(!defined('ABSPATH')) exit; //exit if accessed directly
 
-class Facebook_Feed{
+class KatFacebook{
     // function __construct() {
     //     add_action('wp_head', array(&$this, 'map_scripts'));
     //     $this->map = map();
     // }
     private $numStat;
     private $numCols;
+    private $appId;
+    private $appSecret;
 
     private $authToken;
-    public function __construct($numberofStatuses=2, $numberofCols=2)  {  
-        $this->numStat = $numberofStatuses;  
-        $this->numCols = $numberofCols;  
+    public function __construct()  {  
+        $this->appId = get_option("kat_facebook_app_id");
+        $this->appSecret = get_option("kat_facebook_app_secret");
     }
-    public function init() {   
+    public function get_fbFeed($numberofStatuses=2, $numberofCols=2) {  
+        $this->numStat = $numberofStatuses;  
+        $this->numCols = $numberofCols;   
         return $this->facebook_f();
     }
+
+
+    public function get_fbShare($post_id){
+      if($this->appId == '' || $this->appSecret == '') {
+        return 'No app ID or secret';
+      }
+      $access_token = $this->appId . '|' . $this->appSecret;
+      $json = @file_get_contents('https://graph.facebook.com/v2.7/?id=' . urlencode( get_permalink( $post_id ) ) . '&access_token=' . $access_token);
+      $counts = @json_decode($json, true);
+
+      if($counts && isset($counts["share"])){
+        $shareCount = $counts["share"]["share_count"];
+      }
+      else {
+        $shareCount = 0;
+      }
+      return $shareCount;
+    }
+
         
     private function facebook_f(){ 
 
         $output='';
-        $appId = get_option("kat_facebook_app_id");
-        $appSecret = get_option("kat_facebook_app_secret");
         $fbPage = apply_filters( 'wpml_translate_single_string', get_option("katFbPage"), 'KatContact Data', 'katFbPage' );
 
         if(substr($fbPage, -1) != '/'){
@@ -31,7 +52,7 @@ class Facebook_Feed{
         $fbPageArr = explode("/", $fbPage);
         $pageID = $fbPageArr[3];
         if(!isset($this->authToken)){
-            $this->authToken = $this->fetchUrl('https://graph.facebook.com/oauth/access_token?type=client_cred&client_id='.$appId.'&client_secret='.$appSecret);
+            $this->authToken = $this->fetchUrl('https://graph.facebook.com/oauth/access_token?type=client_cred&client_id='.$this->appId.'&client_secret='.$this->appSecret);
         }
 
         $page_data = $this->fetchUrl("https://graph.facebook.com/".$pageID ."/posts?limit=".$this->numStat.'&'.$this->authToken, true);

@@ -21,8 +21,8 @@ function display_map() {
 
 function display_facebook($numberofStatuses=2, $numberofCols=2) {
     include_once(MY_PLUGIN_PATH.'includes/facebook.php');
-    $facebook = new Facebook_Feed($numberofStatuses, $numberofCols); 
-    return $facebook->init();
+    $facebook = new KatFacebook(); 
+    return $facebook->get_fbFeed($numberofStatuses, $numberofCols);
 }
 
 function display_flickr($numberofPics=2, $numberofCols=2, $displayTitle = false, $flickrFeed = '') {
@@ -34,8 +34,20 @@ function display_flickr($numberofPics=2, $numberofCols=2, $displayTitle = false,
 
 function display_twitter($numOfTweets=3, $hashtag='') {
     include_once(MY_PLUGIN_PATH.'includes/twitter_feed.php');
-    $twitter = new KatTwitterSearch($numOfTweets, $hashtag); 
-    return $twitter->getTSearch();
+    $twitter = new KatTwitter(); 
+    return $twitter->getTSearch($numOfTweets, $hashtag);
+}
+
+function get_twitter_count($numOfTweets=999999, $link='') {
+    include_once(MY_PLUGIN_PATH.'includes/twitter_feed.php');
+    $twitter = new KatTwitter(); 
+    return $twitter->getTwitterShareCount();
+}
+
+function get_fb_count($post_id) {
+    include_once(MY_PLUGIN_PATH.'includes/facebook.php');
+    $facebook = new KatFacebook(); 
+    return $facebook->get_fbShare($post_id);
 }
 
 function display_youtube($numberofVids=2, $numberofCols=2, $displayTitle=false, $youtubeFeed='') {
@@ -48,6 +60,11 @@ function display_instagram($numberofPics=2, $numberofCols=2) {
     include_once(MY_PLUGIN_PATH.'includes/instagram.php');
     $instagram = new Instagram_Feed($numberofPics, $numberofCols); 
     return $instagram->init();
+}
+
+function display_social_share() {
+    include_once(MY_PLUGIN_PATH.'includes/social.php');
+    return social_count();
 }
 
 function getKatCompany(){

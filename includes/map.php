@@ -57,7 +57,7 @@ class Kat_Map{
         }
         else {
 
-            $args = array( 'address' => urlencode( $address ) );
+            $args = array( 'address' => urlencode( self::$address ) );
             $maps_api_url_geocode = self::$maps_api_url_geocode;
             $url        = add_query_arg( $args, $maps_api_url_geocode );
             $response   = wp_remote_get( $url, array( 'decompress' => false ) );
