@@ -38,10 +38,10 @@ function display_twitter($numOfTweets=3, $hashtag='') {
     return $twitter->getTSearch($numOfTweets, $hashtag);
 }
 
-function get_twitter_count($numOfTweets=999999, $link='') {
+function get_twitter_count($link='') {
     include_once(MY_PLUGIN_PATH.'includes/twitter_feed.php');
     $twitter = new KatTwitter(); 
-    return $twitter->getTwitterShareCount();
+    return $twitter->getTwitterShareCount($link);
 }
 
 function get_fb_count($post_id) {

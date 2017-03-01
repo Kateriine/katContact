@@ -49,7 +49,8 @@ class KatTwitter{
         return $this->html;
     }
 
-    public function getTwitterShareCount(){
+    public function getTwitterShareCount($link){
+        global $post;
        //echo'https://api.twitter.com/1.1/search/tweets.json?q='.urlencode($this->hashtag).'&count='.$this->numOfTweets.'&src=typd';
         if(
             $this->consumer_key =='' || 
@@ -59,7 +60,7 @@ class KatTwitter{
             ) {
             return "no oauth key";
         }
-        $tweets = $this->connection->get('https://api.twitter.com/1.1/search/tweets.json?q='.urlencode($this->hashtag).'&src=typd');
+        $tweets = $this->connection->get('https://api.twitter.com/1.1/search/tweets.json?q='.urlencode($link).'&src=typd');
         $statuses = $tweets->statuses;
         
         $this->count = count($statuses);
